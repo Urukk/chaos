@@ -1,7 +1,7 @@
 package com.chaos.common.core.service.impl;
 
 import com.chaos.common.core.dao.BaseDao;
-import com.chaos.common.core.entity.BaseDO;
+import com.chaos.common.core.entity.BasePO;
 import com.chaos.common.core.service.BaseService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:14
  */
 @Service
-public class BaseServiceImpl <D extends BaseDao<T>, T extends BaseDO> implements BaseService<T> {
+public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements BaseService<T> {
 
   @Resource
   protected D dao;

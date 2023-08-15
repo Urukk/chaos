@@ -2,7 +2,7 @@ package dao;
 
 import com.chaos.ChaosApplication;
 import com.chaos.system.dao.UserDao;
-import com.chaos.system.entity.UserDO;
+import com.chaos.system.entity.UserPO;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -28,7 +28,7 @@ class UserDaoTests {
 
   @Test
   void save() {
-    UserDO user = new UserDO();
+    UserPO user = new UserPO();
     user.setUserName("demo");
     user.setPassword("demo");
     userDao.save(user);
@@ -36,10 +36,10 @@ class UserDaoTests {
 
   @Test
   void findById() {
-    Optional<UserDO> user = userDao.findById(1L);
-    user.ifPresent(userDO -> {
-      System.out.println(userDO.getUpdateTime().toString());
-      System.out.println(userDO);
+    Optional<UserPO> user = userDao.findById(1L);
+    user.ifPresent(po -> {
+      System.out.println(po.getUpdateTime().toString());
+      System.out.println(po);
     });
   }
 
@@ -51,8 +51,8 @@ class UserDaoTests {
             user -> {
               user.setUserName("test1");
               user.setUpdateTime(LocalDateTime.now());
-              UserDO uDo = userDao.save(user);
-              System.out.println(uDo);
+              UserPO userPO = userDao.save(user);
+              System.out.println(userPO);
             });
   }
 

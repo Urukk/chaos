@@ -22,7 +22,7 @@ import org.hibernate.annotations.DynamicInsert;
 @ToString
 @MappedSuperclass
 @DynamicInsert
-public class BaseDO implements Serializable {
+public class BasePO implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 1L;

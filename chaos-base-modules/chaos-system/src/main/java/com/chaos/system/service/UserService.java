@@ -1,7 +1,7 @@
 package com.chaos.system.service;
 
 import com.chaos.common.core.service.BaseService;
-import com.chaos.system.entity.UserDO;
+import com.chaos.system.entity.UserPO;
 
 /**
  * service层-用户信息
@@ -9,4 +9,4 @@ import com.chaos.system.entity.UserDO;
  * @author S.H.I.E.L.D
  * @since 2023-08-14 21:26
  */
-public interface UserService extends BaseService<UserDO> {}
+public interface UserService extends BaseService<UserPO> {}

@@ -1,6 +1,6 @@
 package com.chaos.system.entity;
 
-import com.chaos.common.core.entity.BaseDO;
+import com.chaos.common.core.entity.BasePO;
 import jakarta.persistence.Entity;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
@@ -27,7 +27,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_user")
 @DynamicUpdate
 @DynamicInsert
-public class UserDO extends BaseDO {
+public class UserPO extends BasePO {
 
   /** 用户id */
   @Id

@@ -1,7 +1,6 @@
 package com.chaos.system.service.demo.impl;
 
 import com.chaos.system.dao.UserDao;
-import com.chaos.system.entity.UserDO;
 import com.chaos.system.service.demo.DemoService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class DemoServiceImpl implements DemoService {
   private UserDao userDao;
 
   @Override
-  public UserDO getById(Long id) {
+  public com.chaos.system.entity.UserPO getById(Long id) {
     return userDao.findById(id).orElse(null);
   }
 }

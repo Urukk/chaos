@@ -1,6 +1,6 @@
 package com.chaos.common.core.service;
 
-import com.chaos.common.core.entity.BaseDO;
+import com.chaos.common.core.entity.BasePO;
 
 /**
  * service基类
@@ -8,7 +8,7 @@ import com.chaos.common.core.entity.BaseDO;
  * @author S.H.I.E.L.D
  * @since 2023-08-14 21:07
  */
-public interface BaseService<T extends BaseDO> {
+public interface BaseService<T extends BasePO> {
 
   /**
    * 根据id查询

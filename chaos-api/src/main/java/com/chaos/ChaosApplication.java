@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @author S.H.I.E.L.D
  * @since 2023/08/05 12:56
  */
-@EnableJpaRepositories(basePackages = "com.chaos.system.dao")
+@EnableJpaRepositories
 @SpringBootApplication
 public class ChaosApplication {
 
