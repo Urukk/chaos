@@ -1,0 +1,48 @@
+package com.chaos.common.core.service;
+
+import com.chaos.common.core.entity.BaseDO;
+
+/**
+ * service基类
+ *
+ * @author S.H.I.E.L.D
+ * @since 2023-08-14 21:07
+ */
+public interface BaseService<T extends BaseDO> {
+
+  /**
+   * 根据id查询
+   *
+   * @param id id
+   * @return {@link T}
+   */
+  T findById(Long id);
+
+  /**
+   * 保存
+   *
+   * @param entity 实体
+   */
+  void save(T entity);
+
+  /**
+   * 根据id更新
+   *
+   * @param entity 实体
+   */
+  void updateById(T entity);
+
+  /**
+   * 根据id删除
+   *
+   * @param id id
+   */
+  void deleteById(Long id);
+
+  /**
+   * 根据id逻辑删除
+   *
+   * @param id id
+   */
+  void logicDeleteById(Long id);
+}

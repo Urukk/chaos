@@ -1,0 +1,16 @@
+{
+  "serverUrl": "http://localhost:8080",
+  "isStrict": false,
+  "allInOne": true,
+  "outPath": "src/main/resources/static/doc",
+  "coverOld": true,
+  "style": "xt256",
+  "createDebugPage": true,
+  "md5EncryptedHtmlName": false,
+  "sortByTitle": true,
+  "openUrl": "http://119.91.199.41:7700/api",
+  "debugEnvName": "测试环境",
+  "replace": true,
+  "appToken": "1b853f90b6594991b66b1c5d1a0b65b1",
+  "packageFilters": "com.chaos.api.*"
+}
