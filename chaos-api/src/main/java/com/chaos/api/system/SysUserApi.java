@@ -1,10 +1,13 @@
 package com.chaos.api.system;
 
+import com.chaos.system.entity.dto.SysUserDTO;
 import com.chaos.system.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +24,13 @@ public class SysUserApi {
 
   @Resource
   private UserService userService;
+
+  @PostMapping("/save")
+  public Object save(@RequestBody SysUserDTO dto) {
+    log.info("新增用户信息");
+//    return userService.save();
+    return null;
+  }
 
   @GetMapping("/{id}")
   public Object getById(@PathVariable Long id) {
