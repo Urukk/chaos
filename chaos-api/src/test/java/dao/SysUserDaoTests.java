@@ -1,8 +1,8 @@
 package dao;
 
 import com.chaos.ChaosApplication;
-import com.chaos.system.dao.UserDao;
-import com.chaos.system.entity.UserPO;
+import com.chaos.system.dao.SysUserDao;
+import com.chaos.system.entity.SysUserPO;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -21,22 +21,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest(classes = ChaosApplication.class)
 @ExtendWith(SpringExtension.class)
-class UserDaoTests {
+class SysUserDaoTests {
 
   @Resource
-  private UserDao userDao;
+  private SysUserDao sysUserDao;
 
   @Test
   void save() {
-    UserPO user = new UserPO();
+    SysUserPO user = new SysUserPO();
     user.setUserName("demo");
     user.setPassword("demo");
-    userDao.save(user);
+    sysUserDao.save(user);
   }
 
   @Test
   void findById() {
-    Optional<UserPO> user = userDao.findById(1L);
+    Optional<SysUserPO> user = sysUserDao.findById(1L);
     user.ifPresent(po -> {
       System.out.println(po.getUpdateTime().toString());
       System.out.println(po);
@@ -45,27 +45,27 @@ class UserDaoTests {
 
   @Test
   void updateById() {
-    userDao
+    sysUserDao
         .findById(1L)
         .ifPresent(
             user -> {
               user.setUserName("test1");
               user.setUpdateTime(LocalDateTime.now());
-              UserPO userPO = userDao.save(user);
-              System.out.println(userPO);
+              SysUserPO sysUserPO = sysUserDao.save(user);
+              System.out.println(sysUserPO);
             });
   }
 
   @Test
   void logicDeleteById() {
-    userDao.logicDeleteById(1L);
-    Assertions.assertTrue(userDao.findById(1L).isEmpty());
+    sysUserDao.logicDeleteById(1L);
+    Assertions.assertTrue(sysUserDao.findById(1L).isEmpty());
   }
 
   @Test
   void deleteById() {
-    userDao.deleteById(1L);
-    Assertions.assertTrue(userDao.findById(1L).isEmpty());
+    sysUserDao.deleteById(1L);
+    Assertions.assertTrue(sysUserDao.findById(1L).isEmpty());
   }
 
 }

@@ -24,8 +24,8 @@ public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements
   }
 
   @Override
-  public void save(T entity) {
-    dao.save(entity);
+  public T save(T entity) {
+    return dao.save(entity);
   }
 
   @Override

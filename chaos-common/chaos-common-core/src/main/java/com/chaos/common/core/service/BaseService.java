@@ -23,7 +23,7 @@ public interface BaseService<T extends BasePO> {
    *
    * @param entity 实体
    */
-  void save(T entity);
+    T save(T entity);
 
   /**
    * 根据id更新

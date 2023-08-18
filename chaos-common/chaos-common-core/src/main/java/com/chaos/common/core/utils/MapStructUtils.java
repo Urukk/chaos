@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
  * @since 2023/08/18 09:07
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MapstructUtils {
+public class MapStructUtils {
 
   private static final Converter CONVERTER = SpringUtils.getBean(Converter.class);
 

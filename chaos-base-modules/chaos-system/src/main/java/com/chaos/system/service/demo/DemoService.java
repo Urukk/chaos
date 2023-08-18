@@ -1,6 +1,6 @@
 package com.chaos.system.service.demo;
 
-import com.chaos.system.entity.UserPO;
+import com.chaos.system.entity.SysUserPO;
 
 /**
  * service层-demo
@@ -10,6 +10,6 @@ import com.chaos.system.entity.UserPO;
  */
 public interface DemoService {
 
-  UserPO getById(Long id);
+  SysUserPO getById(Long id);
 
 }

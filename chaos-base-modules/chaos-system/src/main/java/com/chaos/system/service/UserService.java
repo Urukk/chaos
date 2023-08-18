@@ -1,7 +1,8 @@
 package com.chaos.system.service;
 
 import com.chaos.common.core.service.BaseService;
-import com.chaos.system.entity.UserPO;
+import com.chaos.system.entity.SysUserPO;
+import com.chaos.system.entity.bo.SysUserBO;
 
 /**
  * service层-用户信息
@@ -9,4 +10,8 @@ import com.chaos.system.entity.UserPO;
  * @author S.H.I.E.L.D
  * @since 2023-08-14 21:26
  */
-public interface UserService extends BaseService<UserPO> {}
+public interface UserService extends BaseService<SysUserPO> {
+
+  Boolean saveUser(SysUserBO bo);
+
+}

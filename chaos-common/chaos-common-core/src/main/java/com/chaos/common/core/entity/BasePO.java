@@ -12,7 +12,7 @@ import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 
 /**
- * DO基类
+ * PO基类
  *
  * @author S.H.I.E.L.D
  * @since 2023/08/05 13:39

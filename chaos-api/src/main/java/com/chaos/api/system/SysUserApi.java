@@ -1,5 +1,10 @@
 package com.chaos.api.system;
 
+import com.chaos.common.core.enums.BasicCode;
+import com.chaos.common.core.model.CommonResult;
+import com.chaos.common.core.utils.MapStructUtils;
+import com.chaos.system.entity.SysUserPO;
+import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.entity.dto.SysUserDTO;
 import com.chaos.system.service.UserService;
 import jakarta.annotation.Resource;
@@ -26,14 +31,16 @@ public class SysUserApi {
   private UserService userService;
 
   @PostMapping("/save")
-  public Object save(@RequestBody SysUserDTO dto) {
+  public CommonResult<Boolean> save(@RequestBody SysUserDTO dto) {
     log.info("新增用户信息");
-//    return userService.save();
-    return null;
+    SysUserBO bo = MapStructUtils.convert(dto, SysUserBO.class);
+    Boolean result = userService.saveUser(bo);
+    log.info("新增用户信息是否成功, result:{}", result);
+    return CommonResult.ok(BasicCode.SUCCESS);
   }
 
   @GetMapping("/{id}")
-  public Object getById(@PathVariable Long id) {
+  public Object findById(@PathVariable Long id) {
     log.info("查询用户信息, id:{}", id);
     return userService.findById(id);
   }

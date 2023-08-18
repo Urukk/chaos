@@ -27,7 +27,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_user")
 @DynamicUpdate
 @DynamicInsert
-public class UserPO extends BasePO {
+public class SysUserPO extends BasePO {
 
   /** 用户id */
   @Id
