@@ -1,21 +1,22 @@
-package com.chaos.system.entity.bo;
+package com.chaos.system.entity.dto;
 
-import com.chaos.system.entity.SysUserPO;
+import com.chaos.system.entity.bo.SysUserBO;
 import io.github.linpeilie.annotations.AutoMapper;
+import jakarta.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Data;
 
 /**
- * bo层-用户信息
+ * dto层-用户信息修改
  *
  * @author S.H.I.E.L.D
- * @since 2023/08/18 10:05
+ * @since 2023-08-20 0:29
  */
 @Data
-@AutoMapper(target = SysUserPO.class, reverseConvertGenerate = false)
-public class SysUserBO implements Serializable {
+@AutoMapper(target = SysUserBO.class)
+public class SysUserUpDTO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
@@ -23,6 +24,7 @@ public class SysUserBO implements Serializable {
   private Long id;
 
   /** 用户名 */
+  @NotBlank(message = "用户名不能为空")
   private String userName;
 
   /** 用户密码 */
