@@ -3,9 +3,11 @@ package com.chaos.api.system;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.core.utils.MapStructUtils;
+import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.entity.dto.SysUserDTO;
 import com.chaos.system.entity.dto.SysUserUpDTO;
+import com.chaos.system.entity.vo.SysUserVO;
 import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -29,9 +31,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SysUserApi {
 
-  @Resource
-  private SysUserService sysUserService;
+  @Resource private SysUserService sysUserService;
 
+  /**
+   * 保存用户信息
+   *
+   * @param dto 用户信息
+   * @return {@link CommonResult<Boolean>}
+   */
   @PostMapping("/save")
   public CommonResult<Boolean> save(@RequestBody SysUserDTO dto) {
     log.info("新增用户信息");
@@ -41,6 +48,12 @@ public class SysUserApi {
     return CommonResult.ok(BasicCode.SUCCESS);
   }
 
+  /**
+   * 删除用户信息
+   *
+   * @param id 用户id
+   * @return {@link CommonResult<Boolean>}
+   */
   @DeleteMapping("/{id}")
   public CommonResult<Boolean> deleteById(@PathVariable Long id) {
     log.info("删除用户信息, id:{}", id);
@@ -49,6 +62,12 @@ public class SysUserApi {
     return CommonResult.ok(BasicCode.SUCCESS);
   }
 
+  /**
+   * 更新用户信息
+   *
+   * @param dto 用户信息
+   * @return {@link CommonResult<Boolean>}
+   */
   @PutMapping("/edit")
   public CommonResult<Boolean> updateById(@RequestBody SysUserUpDTO dto) {
     log.info("更新用户信息");
@@ -58,10 +77,19 @@ public class SysUserApi {
     return CommonResult.ok(BasicCode.SUCCESS);
   }
 
+  /**
+   * 根据id查询用户信息
+   *
+   * @param id 用户id
+   * @return {@link CommonResult<SysUserVO>}
+   */
   @GetMapping("/{id}")
-  public Object findById(@PathVariable Long id) {
+  public CommonResult<SysUserVO> findById(@PathVariable Long id) {
     log.info("查询用户信息, id:{}", id);
-    return sysUserService.findById(id);
+    SysUserPO po = sysUserService.findById(id);
+    if (po == null) {
+      return CommonResult.fail(BasicCode.NO_DATA);
+    }
+    return CommonResult.ok().addData(MapStructUtils.convert(po, SysUserVO.class));
   }
-
 }

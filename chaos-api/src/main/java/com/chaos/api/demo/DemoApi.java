@@ -23,6 +23,12 @@ public class DemoApi {
   @Resource
   private DemoService demoService;
 
+  /**
+   * 查询测试接口
+   *
+   * @param id 用户id
+   * @return {@link Object}
+   */
   @GetMapping("/{id}")
   @ResponseBody
   public Object getById(@PathVariable Long id) {
