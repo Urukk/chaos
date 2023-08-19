@@ -58,7 +58,8 @@ class SysUserDaoTests {
 
   @Test
   void logicDeleteById() {
-    sysUserDao.logicDeleteById(1L);
+    int i = sysUserDao.logicDeleteById(1L);
+    System.out.println("逻辑删除结果: " + i);
     Assertions.assertTrue(sysUserDao.findById(1L).isEmpty());
   }
 

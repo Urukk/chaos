@@ -30,7 +30,7 @@ public interface BaseService<T extends BasePO> {
    *
    * @param entity 实体
    */
-  void updateById(T entity);
+  T updateById(T entity);
 
   /**
    * 根据id删除
@@ -44,5 +44,5 @@ public interface BaseService<T extends BasePO> {
    *
    * @param id id
    */
-  void logicDeleteById(Long id);
+  Boolean logicDeleteById(Long id);
 }

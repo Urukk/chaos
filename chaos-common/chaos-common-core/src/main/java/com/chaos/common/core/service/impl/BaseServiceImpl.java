@@ -29,8 +29,8 @@ public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements
   }
 
   @Override
-  public void updateById(T entity) {
-    dao.save(entity);
+  public T updateById(T entity) {
+    return dao.save(entity);
   }
 
   @Override
@@ -39,7 +39,7 @@ public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements
   }
 
   @Override
-  public void logicDeleteById(Long id) {
-    dao.logicDeleteById(id);
+  public Boolean logicDeleteById(Long id) {
+    return dao.logicDeleteById(id) > 0;
   }
 }

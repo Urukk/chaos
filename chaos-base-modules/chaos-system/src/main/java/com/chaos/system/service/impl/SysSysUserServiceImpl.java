@@ -5,7 +5,7 @@ import com.chaos.common.core.utils.MapStructUtils;
 import com.chaos.system.dao.SysUserDao;
 import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.bo.SysUserBO;
-import com.chaos.system.service.UserService;
+import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:30
  */
 @Service
-public class UserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements UserService {
+public class SysSysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements
+    SysUserService {
 
   @Resource private SysUserDao sysUserDao;
 
@@ -26,6 +27,15 @@ public class UserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> impl
     if (po != null) {
       // TODO 业务逻辑 ...初始化用户密码等等
       po.setPassword("123456");
+      return super.save(po) != null;
+    }
+    return false;
+  }
+
+  @Override
+  public Boolean updateUser(SysUserBO bo) {
+    SysUserPO po = MapStructUtils.convert(bo, SysUserPO.class);
+    if (po != null) {
       return super.save(po) != null;
     }
     return false;

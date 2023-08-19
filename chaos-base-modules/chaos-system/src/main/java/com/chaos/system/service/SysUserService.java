@@ -10,8 +10,10 @@ import com.chaos.system.entity.bo.SysUserBO;
  * @author S.H.I.E.L.D
  * @since 2023-08-14 21:26
  */
-public interface UserService extends BaseService<SysUserPO> {
+public interface SysUserService extends BaseService<SysUserPO> {
 
   Boolean saveUser(SysUserBO bo);
+
+  Boolean updateUser(SysUserBO bo);
 
 }

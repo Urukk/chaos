@@ -1,7 +1,7 @@
 package service;
 
 import com.chaos.ChaosApplication;
-import com.chaos.system.service.UserService;
+import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,13 +16,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  */
 @SpringBootTest(classes = ChaosApplication.class)
 @ExtendWith(SpringExtension.class)
-class UserServiceTest {
+class SysUserServiceTest {
 
   @Resource
-  private UserService userService;
+  private SysUserService sysUserService;
 
   @Test
   void getById() {
-    System.out.println(userService.findById(1L));
+    System.out.println(sysUserService.findById(1L));
   }
 }

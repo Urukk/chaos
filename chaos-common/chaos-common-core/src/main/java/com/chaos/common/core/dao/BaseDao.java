@@ -41,7 +41,7 @@ public interface BaseDao<T extends BasePO> extends JpaRepository<T, Long> {
   Optional<T> findByIdNotDeleted(Long id);
 
   @Modifying
-  @Query("update #{#entityName} t set t.isDeleted = 1 where t.id = ?1")
+  @Query("update #{#entityName} t set t.isDeleted = 1, t.updateTime = now() where t.id = ?1")
   @Transactional(rollbackFor = Exception.class)
-  void logicDeleteById(Long id);
+  int logicDeleteById(Long id);
 }
