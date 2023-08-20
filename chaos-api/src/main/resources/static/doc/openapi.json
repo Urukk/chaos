@@ -1,0 +1,501 @@
+{
+  "components": {
+    "schemas": {
+      "string": {
+        "format": "string",
+        "type": "string"
+      },
+      "SysUserUpDTO_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "主键",
+            "type": "number",
+            "example": "0"
+          },
+          "userName": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "用户密码",
+            "type": "string"
+          },
+          "gender": {
+            "format": "string",
+            "description": "性别(0-未知 1-男 2-女)",
+            "type": "string"
+          },
+          "avatar": {
+            "format": "string",
+            "description": "头像地址",
+            "type": "string"
+          },
+          "idCard": {
+            "format": "string",
+            "description": "身份证号",
+            "type": "string"
+          },
+          "phone": {
+            "format": "string",
+            "description": "手机号码",
+            "type": "string"
+          },
+          "email": {
+            "format": "string",
+            "description": "邮箱",
+            "type": "string"
+          },
+          "lastLoginTime": {
+            "format": "string",
+            "description": "最后登录时间",
+            "type": "string",
+            "example": "yyyy-MM-dd HH:mm:ss"
+          }
+        },
+        "required": [
+          "userName"
+        ]
+      },
+      "Object_response": {
+        "properties": {
+          "any object": {
+            "description": "any object.(object)",
+            "type": "object"
+          }
+        }
+      },
+      "CommonResultSysUserVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysUserVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "SysUserDTO_request": {
+        "properties": {
+          "userNo": {
+            "format": "string",
+            "description": "用户编号",
+            "type": "string"
+          },
+          "userName": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "用户密码",
+            "type": "string"
+          },
+          "gender": {
+            "format": "string",
+            "description": "性别(0-未知 1-男 2-女)",
+            "type": "string"
+          },
+          "avatar": {
+            "format": "string",
+            "description": "头像地址",
+            "type": "string"
+          },
+          "idCard": {
+            "format": "string",
+            "description": "身份证号",
+            "type": "string"
+          },
+          "phone": {
+            "format": "string",
+            "description": "手机号码",
+            "type": "string"
+          },
+          "email": {
+            "format": "string",
+            "description": "邮箱",
+            "type": "string"
+          },
+          "lastLoginTime": {
+            "format": "string",
+            "description": "最后登录时间",
+            "type": "string",
+            "example": "yyyy-MM-dd HH:mm:ss"
+          }
+        },
+        "required": [
+          "userNo",
+          "userName"
+        ]
+      },
+      "CommonResultBoolean_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "format": "boolean",
+            "description": "响应数据",
+            "type": "boolean"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "SysUserVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "用户id",
+            "type": "number",
+            "example": "0"
+          },
+          "userNo": {
+            "format": "string",
+            "description": "用户编号",
+            "type": "string",
+            "example": ""
+          },
+          "userName": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string",
+            "example": ""
+          },
+          "password": {
+            "format": "string",
+            "description": "用户密码",
+            "type": "string",
+            "example": ""
+          },
+          "gender": {
+            "format": "string",
+            "description": "性别(0-未知 1-男 2-女)",
+            "type": "string",
+            "example": ""
+          },
+          "avatar": {
+            "format": "string",
+            "description": "头像地址",
+            "type": "string",
+            "example": ""
+          },
+          "idCard": {
+            "format": "string",
+            "description": "身份证号",
+            "type": "string",
+            "example": ""
+          },
+          "phone": {
+            "format": "string",
+            "description": "手机号码",
+            "type": "string",
+            "example": ""
+          },
+          "email": {
+            "format": "string",
+            "description": "邮箱",
+            "type": "string",
+            "example": ""
+          },
+          "lastLoginTime": {
+            "format": "string",
+            "description": "最后登录时间",
+            "type": "string",
+            "example": "yyyy-MM-dd HH:mm:ss"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/user/save": {
+      "post": {
+        "summary": "保存用户信息",
+        "deprecated": false,
+        "description": "保存用户信息",
+        "tags": [
+          "基础模块-用户信息"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysUserDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"userNo\": \"\",\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-user-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/user/edit": {
+      "put": {
+        "summary": "更新用户信息",
+        "deprecated": false,
+        "description": "更新用户信息",
+        "tags": [
+          "基础模块-用户信息"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysUserUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-user-edit-PUT",
+        "parameters": []
+      }
+    },
+    "/api/v1/user/{id}": {
+      "delete": {
+        "summary": "删除用户信息",
+        "deprecated": false,
+        "description": "删除用户信息",
+        "tags": [
+          "基础模块-用户信息"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-user-{id}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      },
+      "get": {
+        "summary": "根据id查询用户信息",
+        "deprecated": false,
+        "description": "根据id查询用户信息",
+        "tags": [
+          "基础模块-用户信息"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysUserVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"userNo\": \"\",\n    \"userName\": \"\",\n    \"password\": \"\",\n    \"gender\": \"\",\n    \"avatar\": \"\",\n    \"idCard\": \"\",\n    \"phone\": \"\",\n    \"email\": \"\",\n    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-user-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/demo/{id}": {
+      "get": {
+        "summary": "查询测试接口",
+        "deprecated": false,
+        "description": "查询测试接口",
+        "tags": [
+          "测试demo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Object_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-demo-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "用户id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "chaos接口文档",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "基础模块-用户信息",
+      "description": "基础模块-用户信息"
+    },
+    {
+      "name": "测试demo",
+      "description": "测试demo"
+    }
+  ]
+}
