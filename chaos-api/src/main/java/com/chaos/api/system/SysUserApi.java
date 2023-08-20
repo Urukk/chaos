@@ -45,7 +45,7 @@ public class SysUserApi {
     SysUserBO bo = MapStructUtils.convert(dto, SysUserBO.class);
     Boolean result = sysUserService.saveUser(bo);
     log.info("新增用户信息是否成功, result:{}", result);
-    return CommonResult.ok(BasicCode.SUCCESS);
+    return result ? CommonResult.fail(BasicCode.INSERT_ERROR) : CommonResult.ok(BasicCode.SUCCESS);
   }
 
   /**
@@ -59,7 +59,7 @@ public class SysUserApi {
     log.info("删除用户信息, id:{}", id);
     Boolean result = sysUserService.logicDeleteById(id);
     log.info("删除用户信息是否成功, result:{}", result);
-    return CommonResult.ok(BasicCode.SUCCESS);
+    return result ? CommonResult.fail(BasicCode.DELETE_ERROR) : CommonResult.ok(BasicCode.SUCCESS);
   }
 
   /**
@@ -74,7 +74,7 @@ public class SysUserApi {
     SysUserBO bo = MapStructUtils.convert(dto, SysUserBO.class);
     Boolean result = sysUserService.updateUser(bo);
     log.info("更新用户信息是否成功, result:{}", result);
-    return CommonResult.ok(BasicCode.SUCCESS);
+    return result ? CommonResult.fail(BasicCode.UPDATE_ERROR) : CommonResult.ok(BasicCode.SUCCESS);
   }
 
   /**
