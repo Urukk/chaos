@@ -6,9 +6,8 @@ import com.chaos.common.core.utils.MapStructUtils;
 import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.bo.SysRoleBO;
 import com.chaos.system.entity.dto.SysRoleDTO;
-import com.chaos.system.entity.dto.SysUserUpDTO;
+import com.chaos.system.entity.dto.SysRoleUpDTO;
 import com.chaos.system.entity.vo.SysRoleVO;
-import com.chaos.system.entity.vo.SysUserVO;
 import com.chaos.system.service.SysRoleService;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
@@ -75,7 +74,7 @@ public class SysRoleApi {
    * @return {@link CommonResult<Boolean>}
    */
   @PutMapping("/edit")
-  public CommonResult<Boolean> updateById(@RequestBody SysUserUpDTO dto) {
+  public CommonResult<Boolean> updateById(@RequestBody SysRoleUpDTO dto) {
     log.info("更新角色信息");
     SysRoleBO bo = MapStructUtils.convert(dto, SysRoleBO.class);
     Boolean result = sysRoleService.updateRole(bo);
@@ -96,6 +95,6 @@ public class SysRoleApi {
     if (po == null) {
       return CommonResult.fail(BasicCode.NO_DATA);
     }
-    return CommonResult.ok().addData(MapStructUtils.convert(po, SysUserVO.class));
+    return CommonResult.ok().addData(MapStructUtils.convert(po, SysRoleVO.class));
   }
 }

@@ -30,32 +30,32 @@ public class BasePO implements Serializable {
   /**
    * 逻辑删除的状态 0-未删除 1-已删除
    */
-  @Column(name = "is_deleted", columnDefinition  = "tinyint default 0")
+  @Column
   private Integer isDeleted;
 
   /**
    * 创建者
    */
-  @Column(name = "create_by", columnDefinition = "varchar(64) default ''")
+  @Column
   private String createBy;
 
   /**
    * 创建时间
    */
-  @Column(name = "create_time", columnDefinition = "datetime default current_timestamp")
+  @Column
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createTime;
 
   /**
    * 更新者
    */
-  @Column(name = "update_by", columnDefinition = "varchar(64) default ''")
+  @Column
   private String updateBy;
 
   /**
    * 更新时间
    */
-  @Column(name = "update_time", columnDefinition = "datetime default current_timestamp")
+  @Column
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updateTime;
 
