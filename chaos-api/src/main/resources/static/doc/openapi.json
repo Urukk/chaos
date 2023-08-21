@@ -1,6 +1,34 @@
 {
   "components": {
     "schemas": {
+      "SysRoleVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "用户id",
+            "type": "number",
+            "example": "0"
+          },
+          "roleName": {
+            "format": "string",
+            "description": "角色名称",
+            "type": "string",
+            "example": ""
+          },
+          "roleKey": {
+            "format": "string",
+            "description": "角色字符串",
+            "type": "string",
+            "example": ""
+          },
+          "roleSort": {
+            "format": "int32",
+            "description": "角色排序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
       "string": {
         "format": "string",
         "type": "string"
@@ -160,6 +188,26 @@
           "userName"
         ]
       },
+      "SysRoleDTO_request": {
+        "properties": {
+          "roleName": {
+            "format": "string",
+            "description": "角色名称",
+            "type": "string"
+          },
+          "roleKey": {
+            "format": "string",
+            "description": "角色字符串",
+            "type": "string"
+          },
+          "roleSort": {
+            "format": "int32",
+            "description": "角色排序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
       "CommonResultBoolean_response": {
         "properties": {
           "success": {
@@ -178,6 +226,45 @@
             "format": "boolean",
             "description": "响应数据",
             "type": "boolean"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultSysRoleVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysRoleVO_response"
           },
           "code": {
             "format": "string",
@@ -278,7 +365,7 @@
         "deprecated": false,
         "description": "保存用户信息",
         "tags": [
-          "基础模块-用户信息"
+          "基础模块-用户管理"
         ],
         "requestBody": {
           "content": {
@@ -317,13 +404,58 @@
         "parameters": []
       }
     },
+    "/api/v1/role/edit": {
+      "put": {
+        "summary": "更新角色信息",
+        "deprecated": false,
+        "description": "更新角色信息",
+        "tags": [
+          "基础模块-角色管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysUserUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-role-edit-PUT",
+        "parameters": []
+      }
+    },
     "/api/v1/user/edit": {
       "put": {
         "summary": "更新用户信息",
         "deprecated": false,
         "description": "更新用户信息",
         "tags": [
-          "基础模块-用户信息"
+          "基础模块-用户管理"
         ],
         "requestBody": {
           "content": {
@@ -362,13 +494,98 @@
         "parameters": []
       }
     },
+    "/api/v1/role/save": {
+      "post": {
+        "summary": "保存角色信息",
+        "deprecated": false,
+        "description": "保存角色信息",
+        "tags": [
+          "基础模块-角色管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysRoleDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"roleName\": \"\",\n  \"roleKey\": \"\",\n  \"roleSort\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-role-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/role/{ids}": {
+      "delete": {
+        "summary": "删除角色信息",
+        "deprecated": false,
+        "description": "删除角色信息",
+        "tags": [
+          "基础模块-角色管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-role-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "角色id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
+          }
+        ]
+      }
+    },
     "/api/v1/user/{id}": {
       "get": {
         "summary": "根据id查询用户信息",
         "deprecated": false,
         "description": "根据id查询用户信息",
         "tags": [
-          "基础模块-用户信息"
+          "基础模块-用户管理"
         ],
         "responses": {
           "200": {
@@ -403,13 +620,54 @@
         ]
       }
     },
+    "/api/v1/role/{id}": {
+      "get": {
+        "summary": "根据id查询角色信息",
+        "deprecated": false,
+        "description": "根据id查询角色信息",
+        "tags": [
+          "基础模块-角色管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysRoleVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"roleName\": \"\",\n    \"roleKey\": \"\",\n    \"roleSort\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-role-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "角色id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
     "/api/v1/user/{ids}": {
       "delete": {
         "summary": "删除用户信息",
         "deprecated": false,
         "description": "删除用户信息",
         "tags": [
-          "基础模块-用户信息"
+          "基础模块-用户管理"
         ],
         "responses": {
           "200": {
@@ -491,8 +749,12 @@
   },
   "tags": [
     {
-      "name": "基础模块-用户信息",
-      "description": "基础模块-用户信息"
+      "name": "基础模块-用户管理",
+      "description": "基础模块-用户管理"
+    },
+    {
+      "name": "基础模块-角色管理",
+      "description": "基础模块-角色管理"
     },
     {
       "name": "测试demo",

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:30
  */
 @Service
-public class SysSysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements
+public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements
     SysUserService {
 
   @Resource private SysUserDao sysUserDao;
