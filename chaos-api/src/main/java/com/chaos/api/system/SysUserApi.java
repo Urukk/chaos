@@ -10,6 +10,9 @@ import com.chaos.system.entity.dto.SysUserUpDTO;
 import com.chaos.system.entity.vo.SysUserVO;
 import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,14 +54,17 @@ public class SysUserApi {
   /**
    * 删除用户信息
    *
-   * @param id 用户id
+   * @param ids 用户id数组
    * @return {@link CommonResult<Boolean>}
    */
-  @DeleteMapping("/{id}")
-  public CommonResult<Boolean> deleteById(@PathVariable Long id) {
-    log.info("删除用户信息, id:{}", id);
-    Boolean result = sysUserService.logicDeleteById(id);
-    log.info("删除用户信息是否成功, result:{}", result);
+  @DeleteMapping("/{ids}")
+  public CommonResult<Boolean> deleteById(@PathVariable @NotNull Long[] ids) {
+    Boolean result = false;
+    if (ids.length > 0) {
+      log.info("删除用户信息, id:{}", Arrays.toString(ids));
+      result = sysUserService.batchDeleteById(Arrays.asList(ids));
+      log.info("删除用户信息是否成功, result:{}", result);
+    }
     return result ? CommonResult.fail(BasicCode.DELETE_ERROR) : CommonResult.ok(BasicCode.SUCCESS);
   }
 

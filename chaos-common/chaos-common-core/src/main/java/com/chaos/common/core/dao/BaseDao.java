@@ -44,4 +44,9 @@ public interface BaseDao<T extends BasePO> extends JpaRepository<T, Long> {
   @Query("update #{#entityName} t set t.isDeleted = 1, t.updateTime = now() where t.id = ?1")
   @Transactional(rollbackFor = Exception.class)
   int logicDeleteById(Long id);
+
+  @Modifying
+  @Query("update #{#entityName} t set t.isDeleted = 1, t.updateTime = now() where t.id in (?1)")
+  @Transactional(rollbackFor = Exception.class)
+  int batchDeleteById(List<Long> ids);
 }

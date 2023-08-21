@@ -363,45 +363,6 @@
       }
     },
     "/api/v1/user/{id}": {
-      "delete": {
-        "summary": "删除用户信息",
-        "deprecated": false,
-        "description": "删除用户信息",
-        "tags": [
-          "基础模块-用户信息"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommonResultBoolean_response"
-                },
-                "examples": {
-                  "json": {
-                    "summary": "test data",
-                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "api-v1-user-{id}-DELETE",
-        "parameters": [
-          {
-            "schema": {
-              "format": "integer",
-              "type": "int64"
-            },
-            "in": "path",
-            "description": "用户id",
-            "required": true,
-            "name": "id"
-          }
-        ]
-      },
       "get": {
         "summary": "根据id查询用户信息",
         "deprecated": false,
@@ -438,6 +399,46 @@
             "description": "用户id",
             "required": true,
             "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/user/{ids}": {
+      "delete": {
+        "summary": "删除用户信息",
+        "deprecated": false,
+        "description": "删除用户信息",
+        "tags": [
+          "基础模块-用户信息"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-user-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "用户id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
           }
         ]
       }

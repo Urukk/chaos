@@ -1,6 +1,7 @@
 package com.chaos.common.core.service;
 
 import com.chaos.common.core.entity.BasePO;
+import java.util.List;
 
 /**
  * service基类
@@ -23,7 +24,7 @@ public interface BaseService<T extends BasePO> {
    *
    * @param entity 实体
    */
-    T save(T entity);
+  T save(T entity);
 
   /**
    * 根据id更新
@@ -40,9 +41,18 @@ public interface BaseService<T extends BasePO> {
   void deleteById(Long id);
 
   /**
-   * 根据id逻辑删除
+   * 通过id逻辑删除
    *
    * @param id id
+   * @return {@link Boolean}
    */
   Boolean logicDeleteById(Long id);
+
+  /**
+   * 通过id批量删除
+   *
+   * @param ids id
+   * @return {@link Boolean}
+   */
+  Boolean batchDeleteById(List<Long> ids);
 }

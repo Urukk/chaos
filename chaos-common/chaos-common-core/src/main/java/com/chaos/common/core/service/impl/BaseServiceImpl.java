@@ -4,6 +4,7 @@ import com.chaos.common.core.dao.BaseDao;
 import com.chaos.common.core.entity.BasePO;
 import com.chaos.common.core.service.BaseService;
 import jakarta.annotation.Resource;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -41,5 +42,10 @@ public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements
   @Override
   public Boolean logicDeleteById(Long id) {
     return dao.logicDeleteById(id) > 0;
+  }
+
+  @Override
+  public Boolean batchDeleteById(List<Long> ids) {
+    return dao.batchDeleteById(ids) > 0;
   }
 }
