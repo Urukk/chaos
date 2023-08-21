@@ -1,5 +1,6 @@
 package com.chaos.system.entity.bo;
 
+import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.SysUserPO;
 import io.github.linpeilie.annotations.AutoMapper;
 import java.io.Serial;
@@ -13,7 +14,7 @@ import lombok.Data;
  * @since 2023/08/21 14:52
  */
 @Data
-@AutoMapper(target = SysUserPO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysRolePO.class, reverseConvertGenerate = false)
 public class SysRoleBO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
