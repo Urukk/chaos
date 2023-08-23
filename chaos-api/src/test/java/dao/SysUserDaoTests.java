@@ -1,7 +1,7 @@
 package dao;
 
 import com.chaos.ChaosApplication;
-import com.chaos.system.dao.SysUserDao;
+import com.chaos.system.dao.SysUserRepository;
 import com.chaos.system.entity.SysUserPO;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
@@ -25,7 +25,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class SysUserDaoTests {
 
   @Resource
-  private SysUserDao sysUserDao;
+  private SysUserRepository sysUserDao;
 
   @Test
   void save() {

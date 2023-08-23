@@ -2,11 +2,10 @@ package com.chaos.system.service.impl;
 
 import com.chaos.common.core.service.impl.BaseServiceImpl;
 import com.chaos.common.core.utils.MapStructUtils;
-import com.chaos.system.dao.SysUserDao;
+import com.chaos.system.dao.SysUserRepository;
 import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.service.SysUserService;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:30
  */
 @Service
-public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements
+public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUserPO> implements
     SysUserService {
 
   @Override

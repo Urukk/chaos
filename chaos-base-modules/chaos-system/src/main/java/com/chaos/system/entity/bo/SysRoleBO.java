@@ -2,7 +2,6 @@ package com.chaos.system.entity.bo;
 
 import com.chaos.common.core.entity.bo.BaseBO;
 import com.chaos.system.entity.SysRolePO;
-import com.chaos.system.entity.SysUserPO;
 import io.github.linpeilie.annotations.AutoMapper;
 import java.io.Serial;
 import java.io.Serializable;

@@ -2,11 +2,10 @@ package com.chaos.system.service.impl;
 
 import com.chaos.common.core.service.impl.BaseServiceImpl;
 import com.chaos.common.core.utils.MapStructUtils;
-import com.chaos.system.dao.SysRoleDao;
+import com.chaos.system.dao.SysRoleRepository;
 import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.bo.SysRoleBO;
 import com.chaos.system.service.SysRoleService;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2023/08/21 14:38
  */
 @Service
-public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleDao, SysRolePO>
+public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleRepository, SysRolePO>
     implements SysRoleService {
 
   @Override

@@ -1,8 +1,9 @@
 package com.chaos.system.entity.vo;
 
 import com.chaos.system.entity.SysUserPO;
+import com.chaos.system.entity.bo.SysUserBO;
 import io.github.linpeilie.annotations.AutoMapper;
-import jakarta.validation.constraints.NotBlank;
+import io.github.linpeilie.annotations.AutoMappers;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -15,7 +16,7 @@ import lombok.Data;
  * @since 2023-08-20 0:53
  */
 @Data
-@AutoMapper(target = SysUserPO.class)
+@AutoMappers({@AutoMapper(target = SysUserPO.class), @AutoMapper(target = SysUserBO.class)})
 public class SysUserVO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;

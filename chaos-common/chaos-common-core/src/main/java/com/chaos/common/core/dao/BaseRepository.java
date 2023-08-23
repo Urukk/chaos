@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @since 2023/08/05 15:14
  */
 @NoRepositoryBean
-public interface BaseDao<T extends BasePO> extends JpaRepository<T, Long> {
+public interface BaseRepository<T extends BasePO> extends JpaRepository<T, Long> {
 
   @Override
   @Query("select t from #{#entityName} t where t.id = ?1 and t.isDeleted = 0")

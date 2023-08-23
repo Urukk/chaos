@@ -1,6 +1,6 @@
 package com.chaos.system.dao;
 
-import com.chaos.common.core.dao.BaseDao;
+import com.chaos.common.core.dao.BaseRepository;
 import com.chaos.system.entity.SysUserPO;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +11,4 @@ import org.springframework.stereotype.Repository;
  * @since 2023/08/05 14:21
  */
 @Repository
-public interface SysUserDao extends BaseDao<SysUserPO> {}
+public interface SysUserRepository extends BaseRepository<SysUserPO> {}

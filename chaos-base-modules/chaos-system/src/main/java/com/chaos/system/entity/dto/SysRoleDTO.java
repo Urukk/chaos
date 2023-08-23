@@ -1,6 +1,7 @@
 package com.chaos.system.entity.dto;
 
 import com.chaos.system.entity.SysRolePO;
+import com.chaos.system.entity.bo.SysRoleBO;
 import io.github.linpeilie.annotations.AutoMapper;
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import lombok.Data;
  * @since 2023/08/21 14:51
  */
 @Data
-@AutoMapper(target = SysRolePO.class)
+@AutoMapper(target = SysRoleBO.class)
 public class SysRoleDTO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
