@@ -1,5 +1,6 @@
 package com.chaos.system.entity.bo;
 
+import com.chaos.common.core.entity.bo.BaseBO;
 import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.SysUserPO;
 import io.github.linpeilie.annotations.AutoMapper;
@@ -15,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @AutoMapper(target = SysRolePO.class, reverseConvertGenerate = false)
-public class SysRoleBO implements Serializable {
+public class SysRoleBO extends BaseBO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 

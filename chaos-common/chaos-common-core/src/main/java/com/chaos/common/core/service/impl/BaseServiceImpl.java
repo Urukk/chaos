@@ -3,20 +3,22 @@ package com.chaos.common.core.service.impl;
 import com.chaos.common.core.dao.BaseDao;
 import com.chaos.common.core.entity.BasePO;
 import com.chaos.common.core.service.BaseService;
-import jakarta.annotation.Resource;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
- * service 实现类基类
+ * service 抽象实现类
  *
  * @author S.H.I.E.L.D
  * @since 2023-08-14 21:14
  */
 @Service
-public class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements BaseService<T> {
+public abstract class BaseServiceImpl <D extends BaseDao<T>, T extends BasePO> implements BaseService<T> {
 
-  @Resource
+  @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+  @Autowired
   protected D dao;
 
   @Override

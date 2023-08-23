@@ -19,9 +19,6 @@ import org.springframework.stereotype.Service;
 public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleDao, SysRolePO>
     implements SysRoleService {
 
-  @Resource
-  private SysRoleDao sysRoleDao;
-
   @Override
   public Boolean saveRole(SysRoleBO bo) {
     SysRolePO po = MapStructUtils.convert(bo, SysRolePO.class);

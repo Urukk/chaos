@@ -19,9 +19,6 @@ import org.springframework.stereotype.Service;
 public class SysUserServiceImpl extends BaseServiceImpl<SysUserDao, SysUserPO> implements
     SysUserService {
 
-  @Resource
-  private SysUserDao sysUserDao;
-
   @Override
   public Boolean saveUser(SysUserBO bo) {
     SysUserPO po = MapStructUtils.convert(bo, SysUserPO.class);
