@@ -1,8 +1,8 @@
 package com.chaos.common.core.model;
 
+import cn.hutool.core.date.DateUtil;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.enums.IMessage;
-import com.chaos.common.core.utils.DateUtils;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
@@ -66,7 +66,7 @@ public class CommonResult<T> extends BaseResult implements Serializable {
     result.setCode(code);
     result.setSuccess(success);
     result.setMessage(msg);
-    result.setTimestamp(DateUtils.getDate());
+    result.setTimestamp(DateUtil.now());
     result.setTraceId(UUID.randomUUID().toString());
     return result;
   }

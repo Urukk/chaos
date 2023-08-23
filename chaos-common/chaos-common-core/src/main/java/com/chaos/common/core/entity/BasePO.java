@@ -1,15 +1,16 @@
 package com.chaos.common.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 /**
  * PO基类
@@ -22,6 +23,7 @@ import org.hibernate.annotations.DynamicInsert;
 @ToString
 @MappedSuperclass
 @DynamicInsert
+@DynamicUpdate
 public class BasePO implements Serializable {
 
   @Serial

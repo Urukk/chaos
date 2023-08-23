@@ -5,6 +5,7 @@ import com.chaos.system.dao.SysUserDao;
 import com.chaos.system.entity.SysUserPO;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -36,11 +37,21 @@ class SysUserDaoTests {
 
   @Test
   void findById() {
-    Optional<SysUserPO> user = sysUserDao.findById(1L);
+    Optional<SysUserPO> user = sysUserDao.findById(2L);
     user.ifPresent(po -> {
       System.out.println(po.getUpdateTime().toString());
       System.out.println(po);
     });
+  }
+
+  @Test
+  void findAll() {
+    List<SysUserPO> userList = sysUserDao.findAll();
+    userList.forEach(
+        user -> {
+          System.out.println(user.getId());
+          System.out.println(user.getUpdateTime());
+        });
   }
 
   @Test

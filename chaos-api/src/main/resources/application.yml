@@ -92,6 +92,4 @@ spring:
   jpa:
     database: mysql
     show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: none
+    generate-ddl: false
