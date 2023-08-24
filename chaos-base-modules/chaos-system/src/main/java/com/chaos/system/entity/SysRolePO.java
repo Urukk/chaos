@@ -31,7 +31,7 @@ public class SysRolePO extends BasePO {
 
   @Serial private static final long serialVersionUID = -7323556477598037119L;
 
-  /** 用户id */
+  /** 角色id */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

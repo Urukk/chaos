@@ -28,6 +28,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert
 public class SysDeptPO extends BasePO {
 
+  /** 部门id */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
