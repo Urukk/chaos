@@ -23,6 +23,7 @@ public class SysDeptVO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
+  /** 部门id */
   private Long id;
 
   /** 父部门id */

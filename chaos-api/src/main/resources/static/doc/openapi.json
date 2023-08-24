@@ -1,7 +1,7 @@
 {
   "components": {
     "schemas": {
-      "SysRoleVO_response": {
+      "SysRoleUpDTO_request": {
         "properties": {
           "id": {
             "format": "int64",
@@ -12,14 +12,12 @@
           "roleName": {
             "format": "string",
             "description": "角色名称",
-            "type": "string",
-            "example": ""
+            "type": "string"
           },
           "roleKey": {
             "format": "string",
             "description": "角色字符串",
-            "type": "string",
-            "example": ""
+            "type": "string"
           },
           "roleSort": {
             "format": "int32",
@@ -87,50 +85,60 @@
           "userName"
         ]
       },
-      "Object_response": {
+      "SysPermissionUpDTO_request": {
         "properties": {
-          "any object": {
-            "description": "any object.(object)",
-            "type": "object"
+          "id": {
+            "format": "int64",
+            "description": "权限id",
+            "type": "number",
+            "example": "0"
+          },
+          "permissionName": {
+            "format": "string",
+            "description": "权限名称",
+            "type": "string"
           }
         }
       },
-      "CommonResultSysUserVO_response": {
+      "SysPermissionVO_response": {
         "properties": {
-          "success": {
-            "format": "boolean",
-            "description": "是否成功",
-            "type": "boolean",
-            "example": "true"
+          "id": {
+            "format": "int64",
+            "description": "权限id",
+            "type": "number",
+            "example": "0"
           },
-          "message": {
+          "permissionName": {
             "format": "string",
-            "description": "响应信息",
+            "description": "权限名称",
             "type": "string",
             "example": ""
-          },
-          "data": {
-            "description": "响应数据(object)",
-            "type": "object",
-            "$ref": "#/components/schemas/SysUserVO_response"
-          },
-          "code": {
+          }
+        }
+      },
+      "SysPostDTO_request": {
+        "properties": {
+          "postCode": {
             "format": "string",
-            "description": "响应码",
-            "type": "string",
-            "example": ""
+            "description": "岗位编码",
+            "type": "string"
           },
-          "timestamp": {
+          "postName": {
             "format": "string",
-            "description": "时间戳",
-            "type": "string",
-            "example": ""
+            "description": "岗位名称",
+            "type": "string"
           },
-          "traceId": {
-            "format": "string",
-            "description": "请求ID",
-            "type": "string",
-            "example": ""
+          "sort": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          },
+          "status": {
+            "format": "int32",
+            "description": "状态（0正常 1停用）",
+            "type": "integer",
+            "example": "0"
           }
         }
       },
@@ -187,6 +195,497 @@
           "userNo",
           "userName"
         ]
+      },
+      "CommonResultSysOperationLogVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysOperationLogVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultSysRoleVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysRoleVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "SysOperationLogVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "日志主键",
+            "type": "number",
+            "example": "0"
+          },
+          "operationIp": {
+            "format": "string",
+            "description": "IP地址",
+            "type": "string",
+            "example": ""
+          },
+          "operationType": {
+            "format": "int32",
+            "description": "操作类型(0其它 1新增 2修改 3删除)",
+            "type": "integer",
+            "example": "0"
+          },
+          "operationMethod": {
+            "format": "string",
+            "description": "方法名",
+            "type": "string",
+            "example": ""
+          },
+          "requestParams": {
+            "format": "string",
+            "description": "请求参数",
+            "type": "string",
+            "example": ""
+          },
+          "responseContent": {
+            "format": "string",
+            "description": "响应内容",
+            "type": "string",
+            "example": ""
+          },
+          "description": {
+            "format": "string",
+            "description": "操作内容描述",
+            "type": "string",
+            "example": ""
+          },
+          "operationName": {
+            "format": "string",
+            "description": "操作用户名",
+            "type": "string",
+            "example": ""
+          },
+          "operationTime": {
+            "format": "string",
+            "description": "操作时间",
+            "type": "string",
+            "example": "yyyy-MM-dd HH:mm:ss"
+          },
+          "duration": {
+            "format": "int64",
+            "description": "消耗时间",
+            "type": "number",
+            "example": "0"
+          }
+        }
+      },
+      "CommonResultSysDeptVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysDeptVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "SysOperationLogUpDTO_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "日志主键",
+            "type": "number",
+            "example": "0"
+          },
+          "operationIp": {
+            "format": "string",
+            "description": "IP地址",
+            "type": "string"
+          },
+          "operationType": {
+            "format": "int32",
+            "description": "操作类型(0其它 1新增 2修改 3删除)",
+            "type": "integer",
+            "example": "0"
+          },
+          "operationMethod": {
+            "format": "string",
+            "description": "方法名",
+            "type": "string"
+          },
+          "requestParams": {
+            "format": "string",
+            "description": "请求参数",
+            "type": "string"
+          },
+          "responseContent": {
+            "format": "string",
+            "description": "响应内容",
+            "type": "string"
+          },
+          "description": {
+            "format": "string",
+            "description": "操作内容描述",
+            "type": "string"
+          },
+          "operationName": {
+            "format": "string",
+            "description": "操作用户名",
+            "type": "string"
+          },
+          "operationTime": {
+            "format": "string",
+            "description": "操作时间",
+            "type": "string",
+            "example": "yyyy-MM-dd HH:mm:ss"
+          },
+          "duration": {
+            "format": "int64",
+            "description": "消耗时间",
+            "type": "number",
+            "example": "0"
+          }
+        }
+      },
+      "SysPostUpDTO_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "岗位id",
+            "type": "number",
+            "example": "0"
+          },
+          "postCode": {
+            "format": "string",
+            "description": "岗位编码",
+            "type": "string"
+          },
+          "postName": {
+            "format": "string",
+            "description": "岗位名称",
+            "type": "string"
+          },
+          "sort": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          },
+          "status": {
+            "format": "int32",
+            "description": "状态（0正常 1停用）",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "SysRoleVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "用户id",
+            "type": "number",
+            "example": "0"
+          },
+          "roleName": {
+            "format": "string",
+            "description": "角色名称",
+            "type": "string",
+            "example": ""
+          },
+          "roleKey": {
+            "format": "string",
+            "description": "角色字符串",
+            "type": "string",
+            "example": ""
+          },
+          "roleSort": {
+            "format": "int32",
+            "description": "角色排序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "SysDeptUpDTO_request": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "0"
+          },
+          "parentId": {
+            "format": "int64",
+            "description": "父部门id",
+            "type": "number",
+            "example": "0"
+          },
+          "ancestors": {
+            "format": "string",
+            "description": "祖级列表",
+            "type": "string"
+          },
+          "deptName": {
+            "format": "string",
+            "description": "部门名称",
+            "type": "string"
+          },
+          "orderNum": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "SysDeptVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "部门id",
+            "type": "number",
+            "example": "0"
+          },
+          "parentId": {
+            "format": "int64",
+            "description": "父部门id",
+            "type": "number",
+            "example": "0"
+          },
+          "ancestors": {
+            "format": "string",
+            "description": "祖级列表",
+            "type": "string",
+            "example": ""
+          },
+          "deptName": {
+            "format": "string",
+            "description": "部门名称",
+            "type": "string",
+            "example": ""
+          },
+          "orderNum": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "CommonResultSysPermissionVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysPermissionVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultSysPostVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysPostVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "CommonResultSysUserVO_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "description": "响应数据(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/SysUserVO_response"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "SysPermissionDTO_request": {
+        "properties": {
+          "permissionName": {
+            "format": "string",
+            "description": "权限名称",
+            "type": "string"
+          }
+        }
       },
       "SysRoleDTO_request": {
         "properties": {
@@ -247,42 +746,55 @@
           }
         }
       },
-      "CommonResultSysRoleVO_response": {
+      "SysOperationLogDTO_request": {
         "properties": {
-          "success": {
-            "format": "boolean",
-            "description": "是否成功",
-            "type": "boolean",
-            "example": "true"
-          },
-          "message": {
+          "operationIp": {
             "format": "string",
-            "description": "响应信息",
-            "type": "string",
-            "example": ""
+            "description": "IP地址",
+            "type": "string"
           },
-          "data": {
-            "description": "响应数据(object)",
-            "type": "object",
-            "$ref": "#/components/schemas/SysRoleVO_response"
+          "operationType": {
+            "format": "int32",
+            "description": "操作类型(0其它 1新增 2修改 3删除)",
+            "type": "integer",
+            "example": "0"
           },
-          "code": {
+          "operationMethod": {
             "format": "string",
-            "description": "响应码",
-            "type": "string",
-            "example": ""
+            "description": "方法名",
+            "type": "string"
           },
-          "timestamp": {
+          "requestParams": {
             "format": "string",
-            "description": "时间戳",
-            "type": "string",
-            "example": ""
+            "description": "请求参数",
+            "type": "string"
           },
-          "traceId": {
+          "responseContent": {
             "format": "string",
-            "description": "请求ID",
+            "description": "响应内容",
+            "type": "string"
+          },
+          "description": {
+            "format": "string",
+            "description": "操作内容描述",
+            "type": "string"
+          },
+          "operationName": {
+            "format": "string",
+            "description": "操作用户名",
+            "type": "string"
+          },
+          "operationTime": {
+            "format": "string",
+            "description": "操作时间",
             "type": "string",
-            "example": ""
+            "example": "yyyy-MM-dd HH:mm:ss"
+          },
+          "duration": {
+            "format": "int64",
+            "description": "消耗时间",
+            "type": "number",
+            "example": "0"
           }
         }
       },
@@ -349,6 +861,66 @@
             "example": "yyyy-MM-dd HH:mm:ss"
           }
         }
+      },
+      "SysDeptDTO_request": {
+        "properties": {
+          "parentId": {
+            "format": "int64",
+            "description": "父部门id",
+            "type": "number",
+            "example": "0"
+          },
+          "ancestors": {
+            "format": "string",
+            "description": "祖级列表",
+            "type": "string"
+          },
+          "deptName": {
+            "format": "string",
+            "description": "部门名称",
+            "type": "string"
+          },
+          "orderNum": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          }
+        }
+      },
+      "SysPostVO_response": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "description": "岗位id",
+            "type": "number",
+            "example": "0"
+          },
+          "postCode": {
+            "format": "string",
+            "description": "岗位编码",
+            "type": "string",
+            "example": ""
+          },
+          "postName": {
+            "format": "string",
+            "description": "岗位名称",
+            "type": "string",
+            "example": ""
+          },
+          "sort": {
+            "format": "int32",
+            "description": "显示顺序",
+            "type": "integer",
+            "example": "0"
+          },
+          "status": {
+            "format": "int32",
+            "description": "状态（0正常 1停用）",
+            "type": "integer",
+            "example": "0"
+          }
+        }
       }
     }
   },
@@ -359,6 +931,51 @@
   ],
   "openapi": "3.0.3",
   "paths": {
+    "/api/v1/sysOperationLog/edit": {
+      "put": {
+        "summary": "更新操作日志信息",
+        "deprecated": false,
+        "description": "更新操作日志信息",
+        "tags": [
+          "基础模块-操作日志"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysOperationLogUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"operationIp\": \"\",\n  \"operationType\": 0,\n  \"operationMethod\": \"\",\n  \"requestParams\": \"\",\n  \"responseContent\": \"\",\n  \"description\": \"\",\n  \"operationName\": \"\",\n  \"operationTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"duration\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-sysOperationLog-edit-PUT",
+        "parameters": []
+      }
+    },
     "/api/v1/user/save": {
       "post": {
         "summary": "保存用户信息",
@@ -416,12 +1033,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SysUserUpDTO_request"
+                "$ref": "#/components/schemas/SysRoleUpDTO_request"
               },
               "examples": {
                 "json": {
                   "summary": "test data",
-                  "value": "{\n  \"id\": 0,\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                  "value": "{\n  \"id\": 0,\n  \"roleName\": \"\",\n  \"roleKey\": \"\",\n  \"roleSort\": 0\n}"
                 }
               }
             }
@@ -447,6 +1064,343 @@
         },
         "operationId": "api-v1-role-edit-PUT",
         "parameters": []
+      }
+    },
+    "/api/v1/permission/{id}": {
+      "get": {
+        "summary": "根据id查询权限信息",
+        "deprecated": false,
+        "description": "根据id查询权限信息",
+        "tags": [
+          "基础模块-权限管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysPermissionVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"permissionName\": \"\"\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-permission-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "权限id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/sysOperationLog/save": {
+      "post": {
+        "summary": "保存操作日志信息",
+        "deprecated": false,
+        "description": "保存操作日志信息",
+        "tags": [
+          "基础模块-操作日志"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysOperationLogDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"operationIp\": \"\",\n  \"operationType\": 0,\n  \"operationMethod\": \"\",\n  \"requestParams\": \"\",\n  \"responseContent\": \"\",\n  \"description\": \"\",\n  \"operationName\": \"\",\n  \"operationTime\": \"yyyy-MM-dd HH:mm:ss\",\n  \"duration\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-sysOperationLog-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/post/{ids}": {
+      "delete": {
+        "summary": "删除岗位信息",
+        "deprecated": false,
+        "description": "删除岗位信息",
+        "tags": [
+          "基础模块-岗位管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-post-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "岗位id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
+          }
+        ]
+      }
+    },
+    "/api/v1/post/{id}": {
+      "get": {
+        "summary": "根据id查询岗位信息",
+        "deprecated": false,
+        "description": "根据id查询岗位信息",
+        "tags": [
+          "基础模块-岗位管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysPostVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"postCode\": \"\",\n    \"postName\": \"\",\n    \"sort\": 0,\n    \"status\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-post-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "岗位id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/dept/{ids}": {
+      "delete": {
+        "summary": "删除部门信息",
+        "deprecated": false,
+        "description": "删除部门信息",
+        "tags": [
+          "基础模块-部门管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-dept-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "部门id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
+          }
+        ]
+      }
+    },
+    "/api/v1/dept/save": {
+      "post": {
+        "summary": "保存部门信息",
+        "deprecated": false,
+        "description": "保存部门信息",
+        "tags": [
+          "基础模块-部门管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysDeptDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"parentId\": 0,\n  \"ancestors\": \"\",\n  \"deptName\": \"\",\n  \"orderNum\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-dept-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/post/edit": {
+      "put": {
+        "summary": "更新岗位信息",
+        "deprecated": false,
+        "description": "更新岗位信息",
+        "tags": [
+          "基础模块-岗位管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPostUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"postCode\": \"\",\n  \"postName\": \"\",\n  \"sort\": 0,\n  \"status\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-post-edit-PUT",
+        "parameters": []
+      }
+    },
+    "/api/v1/permission/{ids}": {
+      "delete": {
+        "summary": "删除权限信息",
+        "deprecated": false,
+        "description": "删除权限信息",
+        "tags": [
+          "基础模块-权限管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-permission-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "权限id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
+          }
+        ]
       }
     },
     "/api/v1/user/edit": {
@@ -579,6 +1533,132 @@
         ]
       }
     },
+    "/api/v1/permission/edit": {
+      "put": {
+        "summary": "更新权限信息",
+        "deprecated": false,
+        "description": "更新权限信息",
+        "tags": [
+          "基础模块-权限管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPermissionUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"permissionName\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-permission-edit-PUT",
+        "parameters": []
+      }
+    },
+    "/api/v1/sysOperationLog/{ids}": {
+      "delete": {
+        "summary": "删除操作日志信息",
+        "deprecated": false,
+        "description": "删除操作日志信息",
+        "tags": [
+          "基础模块-操作日志"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-sysOperationLog-{ids}-DELETE",
+        "parameters": [
+          {
+            "schema": {
+              "type": "object"
+            },
+            "in": "path",
+            "description": "操作日志id数组,[array of int64]",
+            "required": true,
+            "name": "ids"
+          }
+        ]
+      }
+    },
+    "/api/v1/sysOperationLog/{id}": {
+      "get": {
+        "summary": "根据id查询操作日志信息",
+        "deprecated": false,
+        "description": "根据id查询操作日志信息",
+        "tags": [
+          "基础模块-操作日志"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysOperationLogVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"operationIp\": \"\",\n    \"operationType\": 0,\n    \"operationMethod\": \"\",\n    \"requestParams\": \"\",\n    \"responseContent\": \"\",\n    \"description\": \"\",\n    \"operationName\": \"\",\n    \"operationTime\": \"yyyy-MM-dd HH:mm:ss\",\n    \"duration\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-sysOperationLog-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "操作日志id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
     "/api/v1/user/{id}": {
       "get": {
         "summary": "根据id查询用户信息",
@@ -614,6 +1694,182 @@
             },
             "in": "path",
             "description": "用户id",
+            "required": true,
+            "name": "id"
+          }
+        ]
+      }
+    },
+    "/api/v1/dept/edit": {
+      "put": {
+        "summary": "更新部门信息",
+        "deprecated": false,
+        "description": "更新部门信息",
+        "tags": [
+          "基础模块-部门管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysDeptUpDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"id\": 0,\n  \"parentId\": 0,\n  \"ancestors\": \"\",\n  \"deptName\": \"\",\n  \"orderNum\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-dept-edit-PUT",
+        "parameters": []
+      }
+    },
+    "/api/v1/post/save": {
+      "post": {
+        "summary": "保存岗位信息",
+        "deprecated": false,
+        "description": "保存岗位信息",
+        "tags": [
+          "基础模块-岗位管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPostDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"postCode\": \"\",\n  \"postName\": \"\",\n  \"sort\": 0,\n  \"status\": 0\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-post-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/permission/save": {
+      "post": {
+        "summary": "保存权限信息",
+        "deprecated": false,
+        "description": "保存权限信息",
+        "tags": [
+          "基础模块-权限管理"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysPermissionDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"permissionName\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultBoolean_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": true,\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-permission-save-POST",
+        "parameters": []
+      }
+    },
+    "/api/v1/dept/{id}": {
+      "get": {
+        "summary": "根据id查询部门信息",
+        "deprecated": false,
+        "description": "根据id查询部门信息",
+        "tags": [
+          "基础模块-部门管理"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultSysDeptVO_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"parentId\": 0,\n    \"ancestors\": \"\",\n    \"deptName\": \"\",\n    \"orderNum\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-dept-{id}-GET",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "int64"
+            },
+            "in": "path",
+            "description": "部门id",
             "required": true,
             "name": "id"
           }
@@ -700,47 +1956,6 @@
           }
         ]
       }
-    },
-    "/api/v1/demo/{id}": {
-      "get": {
-        "summary": "查询测试接口",
-        "deprecated": false,
-        "description": "查询测试接口",
-        "tags": [
-          "测试demo"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Object_response"
-                },
-                "examples": {
-                  "json": {
-                    "summary": "test data",
-                    "value": "{}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "api-v1-demo-{id}-GET",
-        "parameters": [
-          {
-            "schema": {
-              "format": "integer",
-              "type": "int64"
-            },
-            "in": "path",
-            "description": "用户id",
-            "required": true,
-            "name": "id"
-          }
-        ]
-      }
     }
   },
   "info": {
@@ -753,12 +1968,24 @@
       "description": "基础模块-用户管理"
     },
     {
+      "name": "基础模块-岗位管理",
+      "description": "基础模块-岗位管理"
+    },
+    {
       "name": "基础模块-角色管理",
       "description": "基础模块-角色管理"
     },
     {
-      "name": "测试demo",
-      "description": "测试demo"
+      "name": "基础模块-操作日志",
+      "description": "基础模块-操作日志"
+    },
+    {
+      "name": "基础模块-权限管理",
+      "description": "基础模块-权限管理"
+    },
+    {
+      "name": "基础模块-部门管理",
+      "description": "基础模块-部门管理"
     }
   ]
 }

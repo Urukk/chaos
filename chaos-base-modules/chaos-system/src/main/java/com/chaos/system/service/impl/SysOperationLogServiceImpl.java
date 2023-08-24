@@ -1,8 +1,10 @@
 package com.chaos.system.service.impl;
 
 import com.chaos.common.core.service.impl.BaseServiceImpl;
+import com.chaos.common.core.utils.MapStructUtils;
 import com.chaos.system.dao.SysOperationLogRepository;
 import com.chaos.system.entity.SysOperationLogPO;
+import com.chaos.system.entity.bo.SysOperationLogBO;
 import com.chaos.system.service.SysOperationLogService;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,26 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-23 23:59
  */
 @Service
-public class SysOperationLogServiceImpl extends BaseServiceImpl<SysOperationLogRepository, SysOperationLogPO> implements
-    SysOperationLogService {}
+public class SysOperationLogServiceImpl
+    extends BaseServiceImpl<SysOperationLogRepository, SysOperationLogPO>
+    implements SysOperationLogService {
+
+  @Override
+  public Boolean saveOperationLog(SysOperationLogBO bo) {
+    SysOperationLogPO po = MapStructUtils.convert(bo, SysOperationLogPO.class);
+    if (po != null) {
+      // TODO 业务逻辑 ...
+      return super.save(po) != null;
+    }
+    return false;
+  }
+
+  @Override
+  public Boolean updateOperationLog(SysOperationLogBO bo) {
+    SysOperationLogPO po = MapStructUtils.convert(bo, SysOperationLogPO.class);
+    if (po != null) {
+      return super.save(po) != null;
+    }
+    return false;
+  }
+}
