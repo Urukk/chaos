@@ -12,6 +12,8 @@
   <modules>
     <module>chaos-common-core</module>
     <module>chaos-common-bom</module>
+    <module>chaos-common-security</module>
+    <module>chaos-common-redis</module>
   </modules>
 
   <artifactId>chaos-common</artifactId>

@@ -20,6 +20,11 @@
         <artifactId>chaos-common-core</artifactId>
         <version>${revision}</version>
       </dependency>
+      <dependency>
+        <groupId>com.chaos</groupId>
+        <artifactId>chaos-common-security</artifactId>
+        <version>${revision}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
