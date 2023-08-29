@@ -2,6 +2,8 @@ package com.chaos.common.security.config;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import com.chaos.common.security.handler.ExceptionHandlerFilter;
+import com.chaos.common.security.handler.JwtAuthenticationTokenFilter;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 /**
  * security 配置
@@ -24,6 +28,10 @@ public class SecurityConfig {
 
   @Resource private SecurityIgnoreUrl securityIgnoreUrl;
 
+  @Resource private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
+  @Resource private ExceptionHandlerFilter exceptionHandlerFilter;
+
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
@@ -34,7 +42,8 @@ public class SecurityConfig {
                     .anyRequest()
                     .authenticated())
         .httpBasic(withDefaults());
-
+    http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(exceptionHandlerFilter, LogoutFilter.class);
     return http.build();
   }
 

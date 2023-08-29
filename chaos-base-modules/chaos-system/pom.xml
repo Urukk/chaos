@@ -20,6 +20,11 @@
       <groupId>com.chaos</groupId>
       <artifactId>chaos-common-core</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>com.chaos</groupId>
+      <artifactId>chaos-common-security</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

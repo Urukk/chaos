@@ -6,11 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.io.Serial;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -44,4 +50,16 @@ public class SysRolePO extends BasePO {
 
   /** 角色排序 */
   @Column private Integer roleSort;
+
+  @ManyToMany(mappedBy = "roles")
+  @Exclude
+  private List<SysUserPO> users;
+
+  @ManyToMany
+  @JoinTable(
+      name = "sys_role_permission",
+      joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "permission_id", referencedColumnName = "id"))
+  @Exclude
+  private List<SysPermissionPO> permissions;
 }

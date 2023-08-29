@@ -31,13 +31,13 @@ public final class JwtUtils {
   /**
    * 生成 token
    *
-   * @param userId 用户 id
+   * @param userNo 用户编号
    * @param username 用户名
    * @return token
    */
-  public static String generateToken(Long userId, String username) {
+  public static String generateToken(String userNo, String username) {
     return JWT.create()
-        .withClaim("userId", userId)
+        .withClaim("userNo", userNo)
         .withClaim("username", username)
         .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
         .sign(Algorithm.HMAC256(secret));

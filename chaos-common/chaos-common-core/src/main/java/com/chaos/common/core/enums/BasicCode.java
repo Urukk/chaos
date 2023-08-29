@@ -13,6 +13,12 @@ public enum BasicCode implements IMessage {
    */
   SUCCESS("200", "操作成功"),
 
+  TOKEN_IS_EMPTY("40101", "token不能为空"),
+
+  TOKEN_IS_EXPIRED("40102", "token已过期"),
+
+  TOKEN_IS_ILLEGAL("40103", "token不合法"),
+
   FAILED("500", "操作失败"),
 
   VALIDATE_FAILED("501", "参数校验失败或为空"),

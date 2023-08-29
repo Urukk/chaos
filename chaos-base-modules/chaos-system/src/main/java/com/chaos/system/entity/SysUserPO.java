@@ -2,17 +2,26 @@ package com.chaos.system.entity;
 
 import com.chaos.common.core.entity.BasePO;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Transient;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.Collection;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * 用户信息对应实体类
@@ -27,7 +36,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_user")
 @DynamicUpdate
 @DynamicInsert
-public class SysUserPO extends BasePO {
+public class SysUserPO extends BasePO implements UserDetails {
 
   /** 用户id */
   @Id
@@ -72,4 +81,46 @@ public class SysUserPO extends BasePO {
   @Column(name = "last_login_time")
   private LocalDateTime lastLoginTime;
 
+  @ManyToMany
+  @JoinTable(
+      name = "sys_user_role",
+      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+  @Exclude
+  private List<SysRolePO> roles;
+
+  @ManyToMany
+  @JoinTable(
+      name = "sys_user_dept",
+      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(name = "dept_id", referencedColumnName = "id"))
+  @Exclude
+  private List<SysDeptPO> depts;
+
+  @Transient private Collection<? extends GrantedAuthority> authorities;
+
+  @Override
+  public String getUsername() {
+    return null;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return false;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return false;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return false;
+  }
 }
