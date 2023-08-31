@@ -11,13 +11,12 @@ pipeline {
     stages{
         stage('拉取git仓库代码'){
             steps{
-                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'f94679c3-051a-4729-add6-b029307e9b15', url: 'https://github.com/Urukk/chaos.git']])
-                echo '拉取git仓库代码 - SUCCESS'
+                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'fb7e7d08-8af3-456f-9b23-171b32d82eb8', url: 'https://github.com/Urukk/chaos.git']])
             }
         }
         stage('通过mavne构建项目'){
             steps{
-                sh '/data/jenkins_podman/data/maven/bin/mvn clean package -DskipTests'
+                sh '/data/jenkins_podman/data/maven/bin/mvn clean package -Dmaven.test.skip=true'
                 echo '通过mavne构建项目 - SUCCESS'
             }
         }
