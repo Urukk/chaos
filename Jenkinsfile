@@ -16,7 +16,7 @@ pipeline {
         }
         stage('通过mavne构建项目'){
             steps{
-                sh '/data/jenkins_podman/data/maven/bin/mvn clean package -Dmaven.test.skip=true'
+                sh '/var/jenkins_home/maven/bin/mvn clean package -Dmaven.test.skip=true'
                 echo '通过mavne构建项目 - SUCCESS'
             }
         }
