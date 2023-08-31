@@ -11,7 +11,7 @@ pipeline {
     stages{
         stage('拉取git仓库代码'){
             steps{
-                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'fb7e7d08-8af3-456f-9b23-171b32d82eb8', url: 'https://github.com/Urukk/chaos.git']])
+                checkout scmGit(branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: '2bb65f98-6835-45ab-8ebd-1bfa1eae75bc', url: 'http://119.91.199.41:10800/github/chaos.git']])
             }
         }
         stage('通过mavne构建项目'){
