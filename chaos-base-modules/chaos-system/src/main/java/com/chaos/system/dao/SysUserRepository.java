@@ -14,7 +14,10 @@ import org.springframework.stereotype.Repository;
 public interface SysUserRepository extends BaseRepository<SysUserPO> {
 
     /**
-    * 根据用户名查询用户
-    */
+     * 根据用户名查询用户
+     *
+     * @param userName 用户名
+     * @return SysUserPO 用户信息
+     */
     SysUserPO findByUserName(String userName);
 }
