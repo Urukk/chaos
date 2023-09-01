@@ -3,6 +3,10 @@ pipeline {
     //定义agent，指定脚本执行的节点
     agent any
 
+    tools{
+        //指定jdk
+        jdk 'jdk17'
+    }
     //定义环境变量
     environment {
         key = 'value'
