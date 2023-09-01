@@ -4,7 +4,7 @@ services:
     build:
         context: ./
         dockerfile: Dockerfile
-    image: chaos:v1.0.0
+    image: chaos-api:v1.0.0
     container_name: chaos
     ports:
       - "8379:8379"
