@@ -27,7 +27,7 @@ pipeline {
         }
         stage('推送项目到远程服务器构建镜像并部署'){
             steps{
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'CentOS7.6-Docker20', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /data/chaos/docker
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'CentOS7.6-Docker20-chaos', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /data/chaos/docker
                 mv ../chaos-api/target/*.jar ./
                 docker-compose down
                 docker-compose up -d --build
