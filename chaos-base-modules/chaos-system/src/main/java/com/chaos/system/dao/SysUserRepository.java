@@ -20,4 +20,12 @@ public interface SysUserRepository extends BaseRepository<SysUserPO> {
      * @return SysUserPO 用户信息
      */
     SysUserPO findByUserName(String userName);
+
+    /**
+     * 根据用户编号查询用户
+     *
+     * @param userNo 用户编号
+     * @return SysUserPO 用户信息
+     */
+    SysUserPO findByUserNo(String userNo);
 }

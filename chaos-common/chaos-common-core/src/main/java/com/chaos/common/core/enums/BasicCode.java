@@ -42,7 +42,11 @@ public enum BasicCode implements IMessage {
    */
   ERROR_LOGIN_NOT_EMPTY("510", "账号或密码不能为空"),
 
-  ERROR_LOGIN_LOCK("511", "密码输错次数过多,已被锁定30分钟");
+  ERROR_LOGIN_LOCK("511", "密码输错次数过多,已被锁定30分钟"),
+
+  ERROR_LOGIN("512", "登录失败");
+
+
 
   /**
    * 响应码
