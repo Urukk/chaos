@@ -15,13 +15,16 @@ import lombok.Data;
  * @since 2023/08/18 10:05
  */
 @Data
-@AutoMapper(target = SysUserPO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysUserPO.class)
 public class SysUserBO extends BaseBO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
   /** 主键 */
   private Long id;
+
+  /** 用户编号 */
+  private String userNo;
 
   /** 用户名 */
   private String userName;

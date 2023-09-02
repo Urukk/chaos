@@ -64,8 +64,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
       throw new ChaosException(BasicCode.TOKEN_IS_ILLEGAL);
     }
 
-    String username = JwtUtils.getUsername(token);
-    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+    String userName = JwtUtils.getUserName(token);
+    UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
     UsernamePasswordAuthenticationToken authenticationToken =
         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     SecurityContextHolder.getContext().setAuthentication(authenticationToken);

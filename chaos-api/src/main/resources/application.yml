@@ -49,7 +49,7 @@ security:
     urls:
       - /webjars/**
       - /favicon.ico
-      - /chaos-api/**
+      - /api/v1/**
 
 # jwt 配置
 auth:

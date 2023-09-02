@@ -1,11 +1,10 @@
 package com.chaos.api.system;
 
-import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.security.utils.JwtUtils;
+import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.entity.dto.SysAuthDTO;
 import com.chaos.system.service.SysAuthService;
-import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +35,8 @@ public class SysAuthApi {
   @PostMapping("/login")
   public CommonResult<String> login(@RequestBody SysAuthDTO dto) {
     log.info("登录");
-    authService.login(dto.getUserNo(), dto.getPassword());
-    String token = JwtUtils.generateToken(dto.getUserNo(), dto.getPassword());
+    SysUserBO bo = authService.login(dto.getUserNo(), dto.getPassword());
+    String token = JwtUtils.generateToken(bo.getUserNo(), bo.getUserName());
     return CommonResult.ok().setResult(token);
   }
 

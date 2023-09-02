@@ -1,5 +1,7 @@
 package com.chaos.system.service;
 
+import com.chaos.system.entity.bo.SysUserBO;
+
 /**
  * service层-鉴权
  *
@@ -14,6 +16,6 @@ public interface SysAuthService {
    * @param userNo 用户编号
    * @param password 用户密码
    */
-  void login(String userNo, String password);
+  SysUserBO login(String userNo, String password);
 
 }

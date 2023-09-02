@@ -17,9 +17,10 @@ public class SysAuthDTO implements Serializable {
   @Serial
   private static final long serialVersionUID = 1L;
 
-  /** 用户名 */
+  /** 用户编码 */
   @NotBlank(message = "账号不能为空")
   private String userNo;
+
 
   /** 用户密码 */
   @NotBlank(message = "用户密码不能为空")

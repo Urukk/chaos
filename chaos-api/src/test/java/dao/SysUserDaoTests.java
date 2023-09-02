@@ -37,7 +37,7 @@ class SysUserDaoTests {
 
   @Test
   void findById() {
-    Optional<SysUserPO> user = sysUserDao.findById(2L);
+    Optional<SysUserPO> user = sysUserDao.findById(1L);
     user.ifPresent(po -> {
       System.out.println(po.getUpdateTime().toString());
       System.out.println(po);
