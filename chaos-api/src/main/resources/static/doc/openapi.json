@@ -5,7 +5,7 @@
         "properties": {
           "id": {
             "format": "int64",
-            "description": "用户id",
+            "description": "角色id",
             "type": "number",
             "example": "0"
           },
@@ -471,7 +471,7 @@
         "properties": {
           "id": {
             "format": "int64",
-            "description": "用户id",
+            "description": "角色id",
             "type": "number",
             "example": "0"
           },
@@ -499,7 +499,7 @@
         "properties": {
           "id": {
             "format": "int64",
-            "description": "No comments found.",
+            "description": "部门id",
             "type": "number",
             "example": "0"
           },
@@ -888,6 +888,24 @@
           }
         }
       },
+      "SysAuthDTO_request": {
+        "properties": {
+          "userNo": {
+            "format": "string",
+            "description": "用户名",
+            "type": "string"
+          },
+          "password": {
+            "format": "string",
+            "description": "用户密码",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userNo",
+          "password"
+        ]
+      },
       "SysPostVO_response": {
         "properties": {
           "id": {
@@ -919,6 +937,45 @@
             "description": "状态（0正常 1停用）",
             "type": "integer",
             "example": "0"
+          }
+        }
+      },
+      "CommonResultString_response": {
+        "properties": {
+          "success": {
+            "format": "boolean",
+            "description": "是否成功",
+            "type": "boolean",
+            "example": "true"
+          },
+          "message": {
+            "format": "string",
+            "description": "响应信息",
+            "type": "string",
+            "example": ""
+          },
+          "data": {
+            "format": "string",
+            "description": "响应数据",
+            "type": "string"
+          },
+          "code": {
+            "format": "string",
+            "description": "响应码",
+            "type": "string",
+            "example": ""
+          },
+          "timestamp": {
+            "format": "string",
+            "description": "时间戳",
+            "type": "string",
+            "example": ""
+          },
+          "traceId": {
+            "format": "string",
+            "description": "请求ID",
+            "type": "string",
+            "example": ""
           }
         }
       }
@@ -1231,6 +1288,51 @@
             "name": "id"
           }
         ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "登录",
+        "deprecated": false,
+        "description": "登录",
+        "tags": [
+          "基础模块-登录鉴权"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SysAuthDTO_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"userNo\": \"\",\n  \"password\": \"\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommonResultString_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": \"\",\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "api-v1-auth-login-POST",
+        "parameters": []
       }
     },
     "/api/v1/dept/{ids}": {
@@ -1963,6 +2065,10 @@
     "version": "1.0.0"
   },
   "tags": [
+    {
+      "name": "基础模块-登录鉴权",
+      "description": "基础模块-登录鉴权"
+    },
     {
       "name": "基础模块-用户管理",
       "description": "基础模块-用户管理"
