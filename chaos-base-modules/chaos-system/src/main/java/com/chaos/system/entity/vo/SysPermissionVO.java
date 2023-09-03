@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 @AutoMappers({
   @AutoMapper(target = SysPermissionPO.class),
-  @AutoMapper(target = SysPermissionBO.class, reverseConvertGenerate = false)
+  @AutoMapper(target = SysPermissionBO.class)
 })
 public class SysPermissionVO implements Serializable {
 

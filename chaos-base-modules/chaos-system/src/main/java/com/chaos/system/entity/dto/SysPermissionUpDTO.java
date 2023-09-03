@@ -13,7 +13,7 @@ import lombok.Data;
  * @since 2023/08/23 16:47
  */
 @Data
-@AutoMapper(target = SysPermissionBO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysPermissionBO.class)
 public class SysPermissionUpDTO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;

@@ -13,7 +13,7 @@ import lombok.Data;
  * @since 2023/08/23 16:43
  */
 @Data
-@AutoMapper(target = SysPostBO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysPostBO.class)
 public class SysPostDTO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;

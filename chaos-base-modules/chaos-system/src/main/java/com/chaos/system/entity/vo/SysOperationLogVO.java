@@ -19,7 +19,7 @@ import lombok.Data;
 @Data
 @AutoMappers({
   @AutoMapper(target = SysOperationLogPO.class),
-  @AutoMapper(target = SysOperationLogBO.class, reverseConvertGenerate = false)
+  @AutoMapper(target = SysOperationLogBO.class)
 })
 public class SysOperationLogVO implements Serializable {
 

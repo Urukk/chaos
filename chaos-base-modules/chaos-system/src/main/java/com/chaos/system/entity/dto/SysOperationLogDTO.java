@@ -15,7 +15,7 @@ import lombok.Data;
  * @since 2023/08/23 16:44
  */
 @Data
-@AutoMapper(target = SysOperationLogBO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysOperationLogBO.class)
 public class SysOperationLogDTO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;

@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 @AutoMappers({
   @AutoMapper(target = SysDeptPO.class),
-  @AutoMapper(target = SysDeptBO.class, reverseConvertGenerate = false)
+  @AutoMapper(target = SysDeptBO.class)
 })
 public class SysDeptVO implements Serializable {
 

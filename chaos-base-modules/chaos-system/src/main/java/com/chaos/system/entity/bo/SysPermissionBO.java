@@ -14,7 +14,7 @@ import lombok.Data;
  * @since 2023/08/23 16:12
  */
 @Data
-@AutoMapper(target = SysPermissionPO.class, reverseConvertGenerate = false)
+@AutoMapper(target = SysPermissionPO.class)
 public class SysPermissionBO extends BaseBO implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
