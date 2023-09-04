@@ -7,7 +7,6 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * jwt 工具类
@@ -21,12 +20,7 @@ public final class JwtUtils {
   private JwtUtils() {}
 
   /** 密钥 */
-  @Value("${auth.jwt.secret}")
-  private static String secret;
-
-  /** 签发者 */
-  @Value("${auth.jwt.expiration}")
-  private Long expiration;
+  private static final String JWT_SECRET = "ewrfwafdasfsdafasdfasdfasserefsdfs";
 
   /**
    * 生成 token
@@ -40,7 +34,7 @@ public final class JwtUtils {
         .withClaim("userNo", userNo)
         .withClaim("username", username)
         .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
-        .sign(Algorithm.HMAC256(secret));
+        .sign(Algorithm.HMAC256(JWT_SECRET));
   }
 
   /**
@@ -71,7 +65,7 @@ public final class JwtUtils {
    */
   public static boolean verify(String token) {
     try {
-      JWT.require(Algorithm.HMAC256(secret)).build().verify(token);
+      JWT.require(Algorithm.HMAC256(JWT_SECRET)).build().verify(token);
       return true;
     } catch (JWTVerificationException | IllegalArgumentException e) {
       return false;

@@ -3,7 +3,6 @@ package com.chaos.api.system;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.security.utils.JwtUtils;
 import com.chaos.system.entity.SysUserPO;
-import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.entity.dto.SysAuthDTO;
 import com.chaos.system.service.SysAuthService;
 import jakarta.annotation.Resource;
@@ -24,8 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SysAuthApi {
 
-  @Resource
-  private SysAuthService authService;
+  @Resource private SysAuthService authService;
 
   /**
    * 登录
@@ -40,5 +38,4 @@ public class SysAuthApi {
     String token = JwtUtils.generateToken(po.getUserNo(), po.getUsername());
     return CommonResult.ok().setResult(token);
   }
-
 }
