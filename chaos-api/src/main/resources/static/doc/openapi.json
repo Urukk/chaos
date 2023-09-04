@@ -39,7 +39,7 @@
             "type": "number",
             "example": "0"
           },
-          "userName": {
+          "username": {
             "format": "string",
             "description": "用户名",
             "type": "string"
@@ -82,7 +82,7 @@
           }
         },
         "required": [
-          "userName"
+          "username"
         ]
       },
       "SysPermissionUpDTO_request": {
@@ -149,7 +149,7 @@
             "description": "用户编号",
             "type": "string"
           },
-          "userName": {
+          "username": {
             "format": "string",
             "description": "用户名",
             "type": "string"
@@ -193,7 +193,7 @@
         },
         "required": [
           "userNo",
-          "userName"
+          "username"
         ]
       },
       "CommonResultSysOperationLogVO_response": {
@@ -812,7 +812,7 @@
             "type": "string",
             "example": ""
           },
-          "userName": {
+          "username": {
             "format": "string",
             "description": "用户名",
             "type": "string",
@@ -892,7 +892,7 @@
         "properties": {
           "userNo": {
             "format": "string",
-            "description": "用户名",
+            "description": "用户编码",
             "type": "string"
           },
           "password": {
@@ -1050,7 +1050,7 @@
               "examples": {
                 "json": {
                   "summary": "test data",
-                  "value": "{\n  \"userNo\": \"\",\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                  "value": "{\n  \"userNo\": \"\",\n  \"username\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
                 }
               }
             }
@@ -1522,7 +1522,7 @@
               "examples": {
                 "json": {
                   "summary": "test data",
-                  "value": "{\n  \"id\": 0,\n  \"userName\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
+                  "value": "{\n  \"id\": 0,\n  \"username\": \"\",\n  \"password\": \"\",\n  \"gender\": \"\",\n  \"avatar\": \"\",\n  \"idCard\": \"\",\n  \"phone\": \"\",\n  \"email\": \"\",\n  \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n}"
                 }
               }
             }
@@ -1780,7 +1780,7 @@
                 "examples": {
                   "json": {
                     "summary": "test data",
-                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"userNo\": \"\",\n    \"userName\": \"\",\n    \"password\": \"\",\n    \"gender\": \"\",\n    \"avatar\": \"\",\n    \"idCard\": \"\",\n    \"phone\": \"\",\n    \"email\": \"\",\n    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"userNo\": \"\",\n    \"username\": \"\",\n    \"password\": \"\",\n    \"gender\": \"\",\n    \"avatar\": \"\",\n    \"idCard\": \"\",\n    \"phone\": \"\",\n    \"email\": \"\",\n    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
                   }
                 }
               }
