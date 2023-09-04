@@ -32,13 +32,13 @@ public final class JwtUtils {
    * 生成 token
    *
    * @param userNo 用户编号
-   * @param userName 用户名
+   * @param username 用户名
    * @return token
    */
-  public static String generateToken(String userNo, String userName) {
+  public static String generateToken(String userNo, String username) {
     return JWT.create()
         .withClaim("userNo", userNo)
-        .withClaim("userName", userName)
+        .withClaim("username", username)
         .withExpiresAt(Instant.now().plus(1, ChronoUnit.DAYS))
         .sign(Algorithm.HMAC256(secret));
   }
@@ -49,8 +49,8 @@ public final class JwtUtils {
    * @param token token
    * @return 用户名
    */
-  public static String getUserName(String token) {
-    return JWT.decode(token).getClaim("userName").asString();
+  public static String getUsername(String token) {
+    return JWT.decode(token).getClaim("username").asString();
   }
 
   /**

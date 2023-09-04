@@ -28,17 +28,16 @@ public class SysAuthServiceImpl implements SysAuthService {
   @Resource private SysUserRepository userRepository;
 
   @Override
-  public SysUserBO login(String userNo, String password) {
+  public SysUserPO login(String userNo, String password) {
     SysUserPO user = userRepository.findByUserNo(userNo);
     if (user == null) {
       throw new ChaosException(BasicCode.ERROR_LOGIN);
     }
-    SysUserBO bo = MapStructUtils.convert(user, SysUserBO.class);
     UsernamePasswordAuthenticationToken token =
-        new UsernamePasswordAuthenticationToken(user.getUsername(), password);
+        new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
     try {
       authenticationManager.authenticate(token);
-      return bo;
+      return user;
     } catch (Exception e) {
       log.error("登录失败", e);
       throw new ChaosException(BasicCode.ERROR_LOGIN);

@@ -1,11 +1,15 @@
 package com.chaos.system.entity.bo;
 
 import com.chaos.common.core.entity.bo.BaseBO;
+import com.chaos.system.entity.SysDeptPO;
+import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.SysUserPO;
 import io.github.linpeilie.annotations.AutoMapper;
+import io.github.linpeilie.annotations.AutoMapping;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -27,7 +31,7 @@ public class SysUserBO extends BaseBO implements Serializable {
   private String userNo;
 
   /** 用户名 */
-  private String userName;
+  private String username;
 
   /** 用户密码 */
   private String password;
@@ -49,4 +53,10 @@ public class SysUserBO extends BaseBO implements Serializable {
 
   /** 最后登录时间 */
   private LocalDateTime lastLoginTime;
+
+  @AutoMapping(targetClass = SysRolePO.class)
+  private List<SysRolePO> roles;
+
+  @AutoMapping(targetClass = SysDeptPO.class)
+  private List<SysDeptPO> depts;
 }

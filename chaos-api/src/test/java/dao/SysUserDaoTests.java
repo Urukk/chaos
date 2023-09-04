@@ -30,7 +30,7 @@ class SysUserDaoTests {
   @Test
   void save() {
     SysUserPO user = new SysUserPO();
-    user.setUserName("demo");
+    user.setUsername("demo");
     user.setPassword("demo");
     sysUserDao.save(user);
   }
@@ -60,7 +60,7 @@ class SysUserDaoTests {
         .findById(1L)
         .ifPresent(
             user -> {
-              user.setUserName("test1");
+              user.setUsername("test1");
               user.setUpdateTime(LocalDateTime.now());
               SysUserPO sysUserPO = sysUserDao.save(user);
               System.out.println(sysUserPO);

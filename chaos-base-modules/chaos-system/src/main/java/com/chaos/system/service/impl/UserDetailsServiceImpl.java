@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * security 实现用户详细信息impl
@@ -23,8 +24,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Resource private SysUserRepository userRepository;
 
   @Override
-  public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-    SysUserPO user = userRepository.findByUserName(userName);
+  @Transactional
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    SysUserPO user = userRepository.findByUsername(username);
     List<SysRolePO> roles = user.getRoles();
     List<SysPermissionPO> permissions =
         roles.stream().flatMap(role -> role.getPermissions().stream()).distinct().toList();

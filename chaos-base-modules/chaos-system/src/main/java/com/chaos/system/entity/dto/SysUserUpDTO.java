@@ -25,7 +25,7 @@ public class SysUserUpDTO implements Serializable {
 
   /** 用户名 */
   @NotBlank(message = "用户名不能为空")
-  private String userName;
+  private String username;
 
   /** 用户密码 */
   private String password;

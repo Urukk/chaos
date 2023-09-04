@@ -52,8 +52,8 @@ public class SysUserPO extends BasePO implements UserDetails {
   private String userNo;
 
   /** 用户名 */
-  @Column(name = "user_name")
-  private String userName;
+  @Column(name = "username")
+  private String username;
 
   /** 用户密码 */
   @Column private String password;
@@ -98,11 +98,6 @@ public class SysUserPO extends BasePO implements UserDetails {
   private List<SysDeptPO> depts;
 
   @Transient private Collection<? extends GrantedAuthority> authorities;
-
-  @Override
-  public String getUsername() {
-    return null;
-  }
 
   @Override
   public boolean isAccountNonExpired() {

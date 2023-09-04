@@ -1,12 +1,23 @@
 package service;
 
 import com.chaos.ChaosApplication;
+import com.chaos.system.entity.SysDeptPO;
+import com.chaos.system.entity.SysPermissionPO;
+import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.SysUserPO;
+import com.chaos.system.entity.bo.SysDeptBO;
+import com.chaos.system.entity.bo.SysPermissionBO;
+import com.chaos.system.entity.bo.SysRoleBO;
 import com.chaos.system.entity.bo.SysUserBO;
 import com.chaos.system.service.SysAuthService;
+import com.chaos.system.service.SysDeptService;
+import com.chaos.system.service.SysPermissionService;
+import com.chaos.system.service.SysRoleService;
 import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +39,15 @@ class SysUserServiceTest {
   @Resource
   private SysAuthService authService;
 
+  @Resource
+  private SysRoleService roleService;
+
+  @Resource
+  private SysDeptService deptService;
+
+  @Resource
+  private SysPermissionService permissionService;
+
   @Test
   void getById() {
     System.out.println(sysUserService.findById(1L));
@@ -37,19 +57,52 @@ class SysUserServiceTest {
   void saveUser() {
 
     SysUserBO user = new SysUserBO();
-    user.setUserName("孙八");
+    user.setUsername("孙八");
+    user.setUserNo("sunba");
     user.setPassword("1234567");
     user.setIdCard("110110200001010001");
     user.setEmail("0000@163.com");
     user.setPhone("13333333333");
     user.setLastLoginTime(LocalDateTime.now());
+    SysRolePO po = roleService.findById(1L);
+    user.setRoles(Collections.singletonList(po));
+    SysDeptPO deptPO = deptService.findById(1L);
+    user.setDepts(Collections.singletonList(deptPO));
 
     System.out.println(sysUserService.saveUser(user));
   }
 
   @Test
   void login() {
-    SysUserBO bo = authService.login("sunba", "1234567");
+    SysUserPO bo = authService.login("sunba", "1234567");
     System.out.println(bo.getId());
+  }
+
+  @Test
+  void saveRole(){
+    SysRoleBO bo = new SysRoleBO();
+    bo.setRoleName("管理员");
+    bo.setRoleKey("admin");
+    bo.setRoleSort(1);
+    SysPermissionPO po = permissionService.findById(1L);
+    bo.setPermissions(Collections.singletonList(po));
+    roleService.saveRole(bo);
+  }
+
+  @Test
+  void saveDept(){
+    SysDeptBO bo = new SysDeptBO();
+    bo.setDeptName("总部");
+    bo.setAncestors("0");
+    bo.setOrderNum(1);
+    bo.setParentId(0L);
+    deptService.saveDept(bo);
+  }
+
+  @Test
+  void savePermission(){
+    SysPermissionBO bo = new SysPermissionBO();
+    bo.setPermissionName("system:user");
+    permissionService.savePermission(bo);
   }
 }

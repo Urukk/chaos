@@ -28,7 +28,7 @@ public class SysUserVO implements Serializable {
   private String userNo;
 
   /** 用户名 */
-  private String userName;
+  private String username;
 
   /** 用户密码 */
   private String password;

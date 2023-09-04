@@ -17,17 +17,16 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:30
  */
 @Service
-public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUserPO> implements
-    SysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUserPO>
+    implements SysUserService {
 
-  @Resource
-  private BCryptPasswordEncoder encoder;
+  @Resource private BCryptPasswordEncoder encoder;
 
   @Override
   public Boolean saveUser(SysUserBO bo) {
     SysUserPO po = MapStructUtils.convert(bo, SysUserPO.class);
     if (po != null) {
-      //初始化用户密码
+      // 初始化用户密码
       po.setPassword(encoder.encode(bo.getPassword()));
       return super.save(po) != null;
     }

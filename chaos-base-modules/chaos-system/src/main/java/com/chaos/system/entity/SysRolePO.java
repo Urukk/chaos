@@ -7,11 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.io.Serial;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,11 +29,9 @@ import org.hibernate.annotations.DynamicUpdate;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "sys_role")
-@DynamicUpdate
 @DynamicInsert
+@DynamicUpdate
 public class SysRolePO extends BasePO {
-
-  @Serial private static final long serialVersionUID = -7323556477598037119L;
 
   /** 角色id */
   @Id

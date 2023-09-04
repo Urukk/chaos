@@ -12,7 +12,19 @@ import com.chaos.system.entity.bo.SysRoleBO;
  */
 public interface SysRoleService extends BaseService<SysRolePO> {
 
+  /**
+   * 保存角色信息
+   *
+   * @param bo 角色信息
+   * @return {@link Boolean}
+   */
   Boolean saveRole(SysRoleBO bo);
 
+  /**
+   * 更新角色信息
+   *
+   * @param bo 角色信息
+   * @return {@link Boolean}
+   */
   Boolean updateRole(SysRoleBO bo);
 }
