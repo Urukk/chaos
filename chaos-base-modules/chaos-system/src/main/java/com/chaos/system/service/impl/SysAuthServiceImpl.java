@@ -34,13 +34,13 @@ public class SysAuthServiceImpl implements SysAuthService {
       throw new ChaosException(BasicCode.ERROR_LOGIN);
     }
     UsernamePasswordAuthenticationToken token =
-        new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        new UsernamePasswordAuthenticationToken(user.getUsername(), password);
     try {
       authenticationManager.authenticate(token);
       return user;
     } catch (Exception e) {
       log.error("登录失败", e);
-      throw new ChaosException(BasicCode.ERROR_LOGIN);
+      throw new ChaosException(e.getMessage());
     }
   }
 }

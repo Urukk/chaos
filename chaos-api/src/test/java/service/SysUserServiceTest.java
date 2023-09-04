@@ -66,8 +66,8 @@ class SysUserServiceTest {
     user.setLastLoginTime(LocalDateTime.now());
     SysRolePO po = roleService.findById(1L);
     user.setRoles(Collections.singletonList(po));
-    SysDeptPO deptPO = deptService.findById(1L);
-    user.setDepts(Collections.singletonList(deptPO));
+//    SysDeptPO deptPO = deptService.findById(1L);
+//    user.setDepts(Collections.singletonList(deptPO));
 
     System.out.println(sysUserService.saveUser(user));
   }
