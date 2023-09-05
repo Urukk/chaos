@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 /**
  * service 抽象实现类
  *
@@ -15,7 +14,8 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-14 21:14
  */
 @Service
-public abstract class BaseServiceImpl <D extends BaseRepository<T>, T extends BasePO> implements BaseService<T> {
+public abstract class BaseServiceImpl<D extends BaseRepository<T>, T extends BasePO>
+    implements BaseService<T> {
 
   @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   @Autowired

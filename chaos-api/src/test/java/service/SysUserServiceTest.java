@@ -59,14 +59,14 @@ class SysUserServiceTest {
   void saveUser() {
 
     SysUserBO user = new SysUserBO();
-    user.setUsername("孙八");
-    user.setUserNo("sunba");
+    user.setUsername("周九");
+    user.setUserNo("zhoujiu");
     user.setPassword("1234567");
     user.setIdCard("110110200001010001");
     user.setEmail("0000@163.com");
     user.setPhone("13333333333");
     user.setLastLoginTime(LocalDateTime.now());
-    SysRolePO po = roleService.findById(1L);
+    SysRolePO po = roleService.findById(2L);
     user.setRoles(Collections.singletonList(po));
 //    SysDeptPO deptPO = deptService.findById(1L);
 //    user.setDepts(Collections.singletonList(deptPO));
@@ -83,9 +83,9 @@ class SysUserServiceTest {
   @Test
   void saveRole(){
     SysRoleBO bo = new SysRoleBO();
-    bo.setRoleName("管理员");
-    bo.setRoleKey("admin");
-    bo.setRoleSort(1);
+    bo.setRoleName("员工");
+    bo.setRoleKey("common");
+    bo.setRoleSort(2);
     SysPermissionPO po = permissionService.findById(1L);
     bo.setPermissions(Collections.singletonList(po));
     roleService.saveRole(bo);
@@ -111,7 +111,7 @@ class SysUserServiceTest {
   @Test
   @Transactional(readOnly = true)
   void findByPhone(){
-    SysUserPO po = sysUserService.findByPhone("13333333333");
+    SysUserPO po = sysUserService.findByPhone("13333333334");
     System.out.println(po);
   }
 }

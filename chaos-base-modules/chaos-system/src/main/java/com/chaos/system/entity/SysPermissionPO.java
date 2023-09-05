@@ -15,6 +15,7 @@ import lombok.ToString;
 import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -30,6 +31,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name = "sys_permission")
 @DynamicUpdate
 @DynamicInsert
+@Where(clause = "is_deleted = 0")
 public class SysPermissionPO extends BasePO implements GrantedAuthority {
 
   /** 权限id */

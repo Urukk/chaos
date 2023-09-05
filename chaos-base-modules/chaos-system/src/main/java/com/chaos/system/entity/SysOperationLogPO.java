@@ -14,6 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 /**
  * 操作日志对应实体
@@ -28,6 +29,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_operation_log")
 @DynamicUpdate
 @DynamicInsert
+@Where(clause = "is_deleted = 0")
 public class SysOperationLogPO extends BasePO {
 
   /** 日志主键 */

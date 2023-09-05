@@ -12,6 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 /**
  * 岗位信息对应实体
@@ -26,6 +27,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_post")
 @DynamicUpdate
 @DynamicInsert
+@Where(clause = "is_deleted = 0")
 public class SysPostPO extends BasePO {
 
   /** 岗位id */

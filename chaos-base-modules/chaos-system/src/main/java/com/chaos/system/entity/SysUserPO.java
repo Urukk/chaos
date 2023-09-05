@@ -20,6 +20,7 @@ import lombok.ToString;
 import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -36,6 +37,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "sys_user")
 @DynamicUpdate
 @DynamicInsert
+@Where(clause = "is_deleted = 0")
 public class SysUserPO extends BasePO implements UserDetails {
 
   /** 用户id */

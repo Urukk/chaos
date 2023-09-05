@@ -17,6 +17,7 @@ import lombok.ToString;
 import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 /**
  * 角色信息对应实体
@@ -31,6 +32,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_role")
 @DynamicInsert
 @DynamicUpdate
+@Where(clause = "is_deleted = 0")
 public class SysRolePO extends BasePO {
 
   /** 角色id */

@@ -15,6 +15,7 @@ import lombok.ToString;
 import lombok.ToString.Exclude;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Where;
 
 /**
  * 部门信息对应实体
@@ -29,6 +30,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "sys_dept")
 @DynamicUpdate
 @DynamicInsert
+@Where(clause = "is_deleted = 0")
 public class SysDeptPO extends BasePO {
 
   /** 部门id */
