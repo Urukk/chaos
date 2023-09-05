@@ -61,5 +61,5 @@ public class SysUserVO implements Serializable {
 
   /** 部门信息集合 */
   @AutoMapping(targetClass = SysDeptPO.class)
-  private List<SysDeptPO> depts;
+  private List<SysDeptVO> depts;
 }

@@ -492,6 +492,13 @@
             "description": "角色排序",
             "type": "integer",
             "example": "0"
+          },
+          "permissions": {
+            "description": "权限信息集合",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -558,6 +565,13 @@
             "description": "显示顺序",
             "type": "integer",
             "example": "0"
+          },
+          "users": {
+            "description": "用户信息集合",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SysUserVO_response"
+            }
           }
         }
       },
@@ -859,6 +873,20 @@
             "description": "最后登录时间",
             "type": "string",
             "example": "yyyy-MM-dd HH:mm:ss"
+          },
+          "roles": {
+            "description": "角色信息集合",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SysRoleVO_response"
+            }
+          },
+          "depts": {
+            "description": "部门信息集合",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SysDeptVO_response"
+            }
           }
         }
       },
@@ -1780,7 +1808,7 @@
                 "examples": {
                   "json": {
                     "summary": "test data",
-                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"userNo\": \"\",\n    \"username\": \"\",\n    \"password\": \"\",\n    \"gender\": \"\",\n    \"avatar\": \"\",\n    \"idCard\": \"\",\n    \"phone\": \"\",\n    \"email\": \"\",\n    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\"\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"userNo\": \"\",\n    \"username\": \"\",\n    \"password\": \"\",\n    \"gender\": \"\",\n    \"avatar\": \"\",\n    \"idCard\": \"\",\n    \"phone\": \"\",\n    \"email\": \"\",\n    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\",\n    \"roles\": [\n      {\n        \"id\": 0,\n        \"roleName\": \"\",\n        \"roleKey\": \"\",\n        \"roleSort\": 0,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"permissionName\": \"\"\n          }\n        ]\n      }\n    ],\n    \"depts\": [\n      {\n        \"id\": 0,\n        \"parentId\": 0,\n        \"ancestors\": \"\",\n        \"deptName\": \"\",\n        \"orderNum\": 0,\n        \"users\": [\n          {\n            \"id\": 0,\n            \"userNo\": \"\",\n            \"username\": \"\",\n            \"password\": \"\",\n            \"gender\": \"\",\n            \"avatar\": \"\",\n            \"idCard\": \"\",\n            \"phone\": \"\",\n            \"email\": \"\",\n            \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\",\n            \"roles\": [\n              {\n                \"id\": 0,\n                \"roleName\": \"\",\n                \"roleKey\": \"\",\n                \"roleSort\": 0,\n                \"permissions\": [\n                  {\n                    \"id\": 0,\n                    \"permissionName\": \"\"\n                  }\n                ]\n              }\n            ],\n            \"depts\": [\n              {\n                \"id\": 0,\n                \"parentId\": 0,\n                \"ancestors\": \"\",\n                \"deptName\": \"\",\n                \"orderNum\": 0,\n                \"users\": [\n                  {\n                    \"id\": 0,\n                    \"userNo\": \"\",\n                    \"username\": \"\",\n                    \"password\": \"\",\n                    \"gender\": \"\",\n                    \"avatar\": \"\",\n                    \"idCard\": \"\",\n                    \"phone\": \"\",\n                    \"email\": \"\",\n                    \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\",\n                    \"roles\": [\n                      {\n                        \"$ref\": \"...\"\n                      }\n                    ],\n                    \"depts\": [\n                      {\n                        \"$ref\": \"...\"\n                      }\n                    ]\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
                   }
                 }
               }
@@ -1956,7 +1984,7 @@
                 "examples": {
                   "json": {
                     "summary": "test data",
-                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"parentId\": 0,\n    \"ancestors\": \"\",\n    \"deptName\": \"\",\n    \"orderNum\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"parentId\": 0,\n    \"ancestors\": \"\",\n    \"deptName\": \"\",\n    \"orderNum\": 0,\n    \"users\": [\n      {\n        \"id\": 0,\n        \"userNo\": \"\",\n        \"username\": \"\",\n        \"password\": \"\",\n        \"gender\": \"\",\n        \"avatar\": \"\",\n        \"idCard\": \"\",\n        \"phone\": \"\",\n        \"email\": \"\",\n        \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\",\n        \"roles\": [\n          {\n            \"id\": 0,\n            \"roleName\": \"\",\n            \"roleKey\": \"\",\n            \"roleSort\": 0,\n            \"permissions\": [\n              {\n                \"id\": 0,\n                \"permissionName\": \"\"\n              }\n            ]\n          }\n        ],\n        \"depts\": [\n          {\n            \"id\": 0,\n            \"parentId\": 0,\n            \"ancestors\": \"\",\n            \"deptName\": \"\",\n            \"orderNum\": 0,\n            \"users\": [\n              {\n                \"id\": 0,\n                \"userNo\": \"\",\n                \"username\": \"\",\n                \"password\": \"\",\n                \"gender\": \"\",\n                \"avatar\": \"\",\n                \"idCard\": \"\",\n                \"phone\": \"\",\n                \"email\": \"\",\n                \"lastLoginTime\": \"yyyy-MM-dd HH:mm:ss\",\n                \"roles\": [\n                  {\n                    \"id\": 0,\n                    \"roleName\": \"\",\n                    \"roleKey\": \"\",\n                    \"roleSort\": 0,\n                    \"permissions\": [\n                      {\n                        \"$ref\": \"...\"\n                      }\n                    ]\n                  }\n                ],\n                \"depts\": [\n                  {\n                    \"id\": 0,\n                    \"parentId\": 0,\n                    \"ancestors\": \"\",\n                    \"deptName\": \"\",\n                    \"orderNum\": 0,\n                    \"users\": [\n                      {\n                        \"$ref\": \"...\"\n                      }\n                    ]\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
                   }
                 }
               }
@@ -1997,7 +2025,7 @@
                 "examples": {
                   "json": {
                     "summary": "test data",
-                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"roleName\": \"\",\n    \"roleKey\": \"\",\n    \"roleSort\": 0\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
+                    "value": "{\n  \"success\": true,\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"roleName\": \"\",\n    \"roleKey\": \"\",\n    \"roleSort\": 0,\n    \"permissions\": [\n      {\n        \"id\": 0,\n        \"permissionName\": \"\"\n      }\n    ]\n  },\n  \"code\": \"\",\n  \"timestamp\": \"\",\n  \"traceId\": \"\"\n}"
                   }
                 }
               }
