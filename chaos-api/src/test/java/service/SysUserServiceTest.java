@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * service层-用户信息 测试类
@@ -49,6 +50,7 @@ class SysUserServiceTest {
   private SysPermissionService permissionService;
 
   @Test
+  @Transactional(readOnly = true)
   void getById() {
     System.out.println(sysUserService.findById(1L));
   }
@@ -104,5 +106,12 @@ class SysUserServiceTest {
     SysPermissionBO bo = new SysPermissionBO();
     bo.setPermissionName("system:user");
     permissionService.savePermission(bo);
+  }
+
+  @Test
+  @Transactional(readOnly = true)
+  void findByPhone(){
+    SysUserPO po = sysUserService.findByPhone("13333333333");
+    System.out.println(po);
   }
 }

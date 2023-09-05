@@ -18,10 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 @NoRepositoryBean
 public interface BaseRepository<T extends BasePO> extends JpaRepository<T, Long> {
 
-  @Override
+//  @Override
+//  @Query("select t from #{#entityName} t where t.id = ?1 and t.isDeleted = 0")
+//  @Transactional(readOnly = true)
+//  Optional<T> findById(Long id);
+
   @Query("select t from #{#entityName} t where t.id = ?1 and t.isDeleted = 0")
   @Transactional(readOnly = true)
-  Optional<T> findById(Long id);
+  Optional<T> findBySingleId(Long id);
 
   @Override
   @Query("select t from #{#entityName} t where t.isDeleted = 0")

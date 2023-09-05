@@ -91,7 +91,7 @@ public class SysDeptApi {
   @GetMapping("/{id}")
   public CommonResult<SysDeptVO> findById(@PathVariable Long id) {
     log.info("查询部门信息, id:{}", id);
-    SysDeptPO po = sysDeptService.findById(id);
+    SysDeptPO po = sysDeptService.findBySingleId(id);
     if (po == null) {
       return CommonResult.fail(BasicCode.NO_DATA);
     }

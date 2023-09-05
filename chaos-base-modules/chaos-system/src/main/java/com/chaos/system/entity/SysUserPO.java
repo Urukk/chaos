@@ -86,7 +86,6 @@ public class SysUserPO extends BasePO implements UserDetails {
       name = "sys_user_role",
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-  @Exclude
   private List<SysRolePO> roles;
 
   @ManyToMany
@@ -94,7 +93,6 @@ public class SysUserPO extends BasePO implements UserDetails {
       name = "sys_user_dept",
       joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
       inverseJoinColumns = @JoinColumn(name = "dept_id", referencedColumnName = "id"))
-  @Exclude
   private List<SysDeptPO> depts;
 
   @Transient private Collection<? extends GrantedAuthority> authorities;

@@ -20,6 +20,14 @@ public interface BaseService<T extends BasePO> {
   T findById(Long id);
 
   /**
+   * 根据id查询(单表)
+   *
+   * @param id id
+   * @return {@link T}
+   */
+  T findBySingleId(Long id);
+
+  /**
    * 保存
    *
    * @param entity 实体

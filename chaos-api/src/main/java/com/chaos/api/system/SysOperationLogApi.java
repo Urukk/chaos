@@ -92,7 +92,7 @@ public class SysOperationLogApi {
   @GetMapping("/{id}")
   public CommonResult<SysOperationLogVO> findById(@PathVariable Long id) {
     log.info("查询操作日志信息, id:{}", id);
-    SysOperationLogPO po = operationLogService.findById(id);
+    SysOperationLogPO po = operationLogService.findBySingleId(id);
     if (po == null) {
       return CommonResult.fail(BasicCode.NO_DATA);
     }

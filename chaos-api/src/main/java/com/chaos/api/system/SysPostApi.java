@@ -91,7 +91,7 @@ public class SysPostApi {
   @GetMapping("/{id}")
   public CommonResult<SysPostVO> findById(@PathVariable Long id) {
     log.info("查询岗位信息, id:{}", id);
-    SysPostPO po = sysPostService.findById(id);
+    SysPostPO po = sysPostService.findBySingleId(id);
     if (po == null) {
       return CommonResult.fail(BasicCode.NO_DATA);
     }

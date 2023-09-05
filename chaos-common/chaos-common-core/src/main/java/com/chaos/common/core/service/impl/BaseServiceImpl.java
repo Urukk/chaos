@@ -27,6 +27,11 @@ public abstract class BaseServiceImpl <D extends BaseRepository<T>, T extends Ba
   }
 
   @Override
+  public T findBySingleId(Long id) {
+    return dao.findBySingleId(id).orElse(null);
+  }
+
+  @Override
   public T save(T entity) {
     return dao.save(entity);
   }

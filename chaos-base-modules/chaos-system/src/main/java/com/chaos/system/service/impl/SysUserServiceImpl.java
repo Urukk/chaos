@@ -22,6 +22,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUs
 
   @Resource private BCryptPasswordEncoder encoder;
 
+  @Resource
+  private SysUserRepository userRepository;
+
   @Override
   public Boolean saveUser(SysUserBO bo) {
     SysUserPO po = MapStructUtils.convert(bo, SysUserPO.class);
@@ -40,5 +43,10 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUs
       return super.save(po) != null;
     }
     return false;
+  }
+
+  @Override
+  public SysUserPO findByPhone(String phone) {
+    return userRepository.findByPhone(phone);
   }
 }

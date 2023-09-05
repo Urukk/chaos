@@ -39,4 +39,6 @@ public class SysAuthApi {
     String token = jwtUtil.generateToken(po.getUserNo(), po.getUsername());
     return CommonResult.ok().setResult(token);
   }
+
+
 }

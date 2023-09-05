@@ -98,4 +98,20 @@ public class SysUserApi {
     }
     return CommonResult.ok().addData(MapStructUtils.convert(po, SysUserVO.class));
   }
+
+//  /**
+//   * 根据id查询用户信息
+//   *
+//   * @param id 用户id
+//   * @return {@link CommonResult<SysUserVO>}
+//   */
+//  @GetMapping("/{id}")
+//  public CommonResult<SysUserVO> findById(SysUserUpDTO id) {
+//    log.info("查询用户信息, id:{}", id);
+//    SysUserPO po = sysUserService.findById(id);
+//    if (po == null) {
+//      return CommonResult.fail(BasicCode.NO_DATA);
+//    }
+//    return CommonResult.ok().addData(MapStructUtils.convert(po, SysUserVO.class));
+//  }
 }

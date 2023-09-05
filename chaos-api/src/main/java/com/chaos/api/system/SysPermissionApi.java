@@ -92,7 +92,7 @@ public class SysPermissionApi {
   @GetMapping("/{id}")
   public CommonResult<SysPermissionVO> findById(@PathVariable Long id) {
     log.info("查询权限信息, id:{}", id);
-    SysPermissionPO po = sysPermissionService.findById(id);
+    SysPermissionPO po = sysPermissionService.findBySingleId(id);
     if (po == null) {
       return CommonResult.fail(BasicCode.NO_DATA);
     }
