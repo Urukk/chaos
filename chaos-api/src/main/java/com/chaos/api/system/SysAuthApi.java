@@ -1,7 +1,7 @@
 package com.chaos.api.system;
 
 import com.chaos.common.core.model.CommonResult;
-import com.chaos.common.security.utils.JwtUtils;
+import com.chaos.common.security.utils.JwtUtil;
 import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.dto.SysAuthDTO;
 import com.chaos.system.service.SysAuthService;
@@ -25,6 +25,7 @@ public class SysAuthApi {
 
   @Resource private SysAuthService authService;
 
+  @Resource private JwtUtil jwtUtil;
   /**
    * 登录
    *
@@ -35,7 +36,7 @@ public class SysAuthApi {
   public CommonResult<String> login(@RequestBody SysAuthDTO dto) {
     log.info("登录");
     SysUserPO po = authService.login(dto.getUserNo(), dto.getPassword());
-    String token = JwtUtils.generateToken(po.getUserNo(), po.getUsername());
+    String token = jwtUtil.generateToken(po.getUserNo(), po.getUsername());
     return CommonResult.ok().setResult(token);
   }
 }

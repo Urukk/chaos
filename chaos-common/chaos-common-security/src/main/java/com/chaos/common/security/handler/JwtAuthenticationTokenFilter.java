@@ -3,7 +3,8 @@ package com.chaos.common.security.handler;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.exception.ChaosException;
 import com.chaos.common.security.config.SecurityIgnoreUrl;
-import com.chaos.common.security.utils.JwtUtils;
+import com.chaos.common.security.utils.JwtUtil;
+// import com.chaos.common.security.utils.JwtUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -36,6 +37,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
   @Resource private SecurityIgnoreUrl securityIgnoreUrl;
 
+  @Resource private JwtUtil jwtUtil;
+
   @Override
   protected void doFilterInternal(
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -56,15 +59,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
       throw new ChaosException(BasicCode.TOKEN_IS_EMPTY);
     }
 
-    if (JwtUtils.verify(token) && JwtUtils.isExpired(token)) {
+    if (jwtUtil.verify(token) && jwtUtil.isExpired(token)) {
       throw new ChaosException(BasicCode.TOKEN_IS_EXPIRED);
     }
 
-    if (JwtUtils.verify(token)) {
+    if (jwtUtil.verify(token)) {
       throw new ChaosException(BasicCode.TOKEN_IS_ILLEGAL);
     }
 
-    String username = JwtUtils.getUsername(token);
+    String username = jwtUtil.getUsername(token);
     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
     UsernamePasswordAuthenticationToken authenticationToken =
         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
