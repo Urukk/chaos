@@ -1,11 +1,14 @@
 package com.chaos.system.entity.vo;
 
+import com.chaos.system.entity.SysPermissionPO;
 import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.bo.SysRoleBO;
 import io.github.linpeilie.annotations.AutoMapper;
 import io.github.linpeilie.annotations.AutoMappers;
+import io.github.linpeilie.annotations.AutoMapping;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -31,4 +34,8 @@ public class SysRoleVO implements Serializable {
 
   /** 角色排序 */
   private Integer roleSort;
+
+  /** 权限信息集合 */
+  @AutoMapping(targetClass = SysPermissionPO.class)
+  private List<SysPermissionVO> permissions;
 }

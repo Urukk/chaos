@@ -1,12 +1,16 @@
 package com.chaos.system.entity.vo;
 
+import com.chaos.system.entity.SysDeptPO;
+import com.chaos.system.entity.SysRolePO;
 import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.bo.SysUserBO;
 import io.github.linpeilie.annotations.AutoMapper;
 import io.github.linpeilie.annotations.AutoMappers;
+import io.github.linpeilie.annotations.AutoMapping;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -50,4 +54,12 @@ public class SysUserVO implements Serializable {
 
   /** 最后登录时间 */
   private LocalDateTime lastLoginTime;
+
+  /** 角色信息集合 */
+  @AutoMapping(targetClass = SysRolePO.class)
+  private List<SysRoleVO> roles;
+
+  /** 部门信息集合 */
+  @AutoMapping(targetClass = SysDeptPO.class)
+  private List<SysDeptPO> depts;
 }

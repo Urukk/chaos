@@ -81,6 +81,7 @@ public class SysUserPO extends BasePO implements UserDetails {
   @Column(name = "last_login_time")
   private LocalDateTime lastLoginTime;
 
+  /** 用户角色集合 */
   @ManyToMany
   @JoinTable(
       name = "sys_user_role",
@@ -88,6 +89,7 @@ public class SysUserPO extends BasePO implements UserDetails {
       inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
   private List<SysRolePO> roles;
 
+  /** 部门信息集合 */
   @ManyToMany
   @JoinTable(
       name = "sys_user_dept",
