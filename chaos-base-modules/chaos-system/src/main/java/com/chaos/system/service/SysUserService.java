@@ -34,5 +34,5 @@ public interface SysUserService extends BaseService<SysUserPO> {
    * @param  phone 手机号
    * @return {@link SysUserPO}
    */
-  SysUserPO findByPhone(String phone);
+  SysUserBO findByPhone(String phone);
 }

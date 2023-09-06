@@ -9,6 +9,7 @@ import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * service实现类-用户信息
@@ -46,7 +47,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserRepository, SysUs
   }
 
   @Override
-  public SysUserPO findByPhone(String phone) {
-    return userRepository.findByPhone(phone);
+  @Transactional(readOnly = true)
+  public SysUserBO findByPhone(String phone) {
+    SysUserPO po = userRepository.findByPhone(phone);
+    return MapStructUtils.convert(po, SysUserBO.class);
   }
 }

@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * service层实现类-鉴权
@@ -28,16 +29,18 @@ public class SysAuthServiceImpl implements SysAuthService {
   @Resource private SysUserRepository userRepository;
 
   @Override
-  public SysUserPO login(String userNo, String password) {
+  @Transactional(readOnly = true)
+  public SysUserBO login(String userNo, String password) {
     SysUserPO user = userRepository.findByUserNo(userNo);
     if (user == null) {
       throw new ChaosException(BasicCode.ERROR_LOGIN);
     }
+    SysUserBO bo = MapStructUtils.convert(user, SysUserBO.class);
     UsernamePasswordAuthenticationToken token =
         new UsernamePasswordAuthenticationToken(user.getUsername(), password);
     try {
       authenticationManager.authenticate(token);
-      return user;
+      return bo;
     } catch (Exception e) {
       log.error("登录失败", e);
       throw new ChaosException(e.getMessage());

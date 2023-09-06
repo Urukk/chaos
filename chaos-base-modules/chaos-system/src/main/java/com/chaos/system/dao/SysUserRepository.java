@@ -3,7 +3,6 @@ package com.chaos.system.dao;
 import com.chaos.common.core.dao.BaseRepository;
 import com.chaos.system.entity.SysUserPO;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * dao层-用户信息
@@ -36,6 +35,5 @@ public interface SysUserRepository extends BaseRepository<SysUserPO> {
    * @param phone 手机号
    * @return SysUserPO 用户信息
    */
-  @Transactional(readOnly = true)
   SysUserPO findByPhone(String phone);
 }

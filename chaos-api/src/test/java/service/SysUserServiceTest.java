@@ -1,10 +1,8 @@
 package service;
 
 import com.chaos.ChaosApplication;
-import com.chaos.system.entity.SysDeptPO;
 import com.chaos.system.entity.SysPermissionPO;
 import com.chaos.system.entity.SysRolePO;
-import com.chaos.system.entity.SysUserPO;
 import com.chaos.system.entity.bo.SysDeptBO;
 import com.chaos.system.entity.bo.SysPermissionBO;
 import com.chaos.system.entity.bo.SysRoleBO;
@@ -16,7 +14,6 @@ import com.chaos.system.service.SysRoleService;
 import com.chaos.system.service.SysUserService;
 import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -76,8 +73,8 @@ class SysUserServiceTest {
 
   @Test
   void login() {
-    SysUserPO bo = authService.login("sunba", "1234567");
-    System.out.println(bo.getId());
+    SysUserBO bo = authService.login("sunba", "1234567");
+    System.out.println(bo);
   }
 
   @Test
@@ -109,9 +106,9 @@ class SysUserServiceTest {
   }
 
   @Test
-  @Transactional(readOnly = true)
+//  @Transactional(readOnly = true)
   void findByPhone(){
-    SysUserPO po = sysUserService.findByPhone("13333333334");
+    SysUserBO po = sysUserService.findByPhone("13333333334");
     System.out.println(po);
   }
 }
