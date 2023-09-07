@@ -3,6 +3,8 @@ package com.chaos.api.system;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.core.utils.MapStructUtils;
+import com.chaos.common.log.annotation.Log;
+import com.chaos.common.log.enums.BusinessType;
 import com.chaos.system.entity.SysOperationLogPO;
 import com.chaos.system.entity.bo.SysOperationLogBO;
 import com.chaos.system.entity.dto.SysOperationLogDTO;
@@ -43,6 +45,7 @@ public class SysOperationLogApi {
    * @return {@link CommonResult <Boolean>}
    */
   @PostMapping("/save")
+  @Log(title = "操作日志", businessType = BusinessType.INSERT)
   public CommonResult<Boolean> save(@RequestBody SysOperationLogDTO dto) {
     log.info("新增操作日志信息");
     SysOperationLogBO bo = MapStructUtils.convert(dto, SysOperationLogBO.class);
@@ -58,6 +61,7 @@ public class SysOperationLogApi {
    * @return {@link CommonResult<Boolean>}
    */
   @DeleteMapping("/{ids}")
+  @Log(title = "操作日志", businessType = BusinessType.DELETE)
   public CommonResult<Boolean> deleteById(@PathVariable @NotNull Long[] ids) {
     Boolean result = false;
     if (ids.length > 0) {
@@ -75,6 +79,7 @@ public class SysOperationLogApi {
    * @return {@link CommonResult<Boolean>}
    */
   @PutMapping("/edit")
+  @Log(title = "操作日志", businessType = BusinessType.UPDATE)
   public CommonResult<Boolean> updateById(@RequestBody SysOperationLogUpDTO dto) {
     log.info("更新操作日志信息");
     SysOperationLogBO bo = MapStructUtils.convert(dto, SysOperationLogBO.class);

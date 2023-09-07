@@ -3,6 +3,8 @@ package com.chaos.api.system;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.core.utils.MapStructUtils;
+import com.chaos.common.log.annotation.Log;
+import com.chaos.common.log.enums.BusinessType;
 import com.chaos.system.entity.SysDeptPO;
 import com.chaos.system.entity.bo.SysDeptBO;
 import com.chaos.system.entity.dto.SysDeptDTO;
@@ -42,6 +44,7 @@ public class SysDeptApi {
    * @return {@link CommonResult <Boolean>}
    */
   @PostMapping("/save")
+  @Log(title = "部门管理", businessType = BusinessType.INSERT)
   public CommonResult<Boolean> save(@RequestBody SysDeptDTO dto) {
     log.info("新增部门信息");
     SysDeptBO bo = MapStructUtils.convert(dto, SysDeptBO.class);
@@ -57,6 +60,7 @@ public class SysDeptApi {
    * @return {@link CommonResult<Boolean>}
    */
   @DeleteMapping("/{ids}")
+  @Log(title = "部门管理", businessType = BusinessType.DELETE)
   public CommonResult<Boolean> deleteById(@PathVariable @NotNull Long[] ids) {
     Boolean result = false;
     if (ids.length > 0) {
@@ -74,6 +78,7 @@ public class SysDeptApi {
    * @return {@link CommonResult<Boolean>}
    */
   @PutMapping("/edit")
+  @Log(title = "部门管理", businessType = BusinessType.UPDATE)
   public CommonResult<Boolean> updateById(@RequestBody SysDeptUpDTO dto) {
     log.info("更新部门信息");
     SysDeptBO bo = MapStructUtils.convert(dto, SysDeptBO.class);

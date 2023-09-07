@@ -3,6 +3,8 @@ package com.chaos.api.system;
 import com.chaos.common.core.enums.BasicCode;
 import com.chaos.common.core.model.CommonResult;
 import com.chaos.common.core.utils.MapStructUtils;
+import com.chaos.common.log.annotation.Log;
+import com.chaos.common.log.enums.BusinessType;
 import com.chaos.system.entity.SysPostPO;
 import com.chaos.system.entity.bo.SysPostBO;
 import com.chaos.system.entity.dto.SysPostDTO;
@@ -42,6 +44,7 @@ public class SysPostApi {
    * @return {@link CommonResult <Boolean>}
    */
   @PostMapping("/save")
+  @Log(title = "岗位管理", businessType = BusinessType.INSERT)
   public CommonResult<Boolean> save(@RequestBody SysPostDTO dto) {
     log.info("新增岗位信息");
     SysPostBO bo = MapStructUtils.convert(dto, SysPostBO.class);
@@ -57,6 +60,7 @@ public class SysPostApi {
    * @return {@link CommonResult<Boolean>}
    */
   @DeleteMapping("/{ids}")
+  @Log(title = "岗位管理", businessType = BusinessType.DELETE)
   public CommonResult<Boolean> deleteById(@PathVariable @NotNull Long[] ids) {
     Boolean result = false;
     if (ids.length > 0) {
@@ -74,6 +78,7 @@ public class SysPostApi {
    * @return {@link CommonResult<Boolean>}
    */
   @PutMapping("/edit")
+  @Log(title = "岗位管理", businessType = BusinessType.UPDATE)
   public CommonResult<Boolean> updateById(@RequestBody SysPostUpDTO dto) {
     log.info("更新岗位信息");
     SysPostBO bo = MapStructUtils.convert(dto, SysPostBO.class);
