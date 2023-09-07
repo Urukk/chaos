@@ -14,6 +14,7 @@
     <module>chaos-common-bom</module>
     <module>chaos-common-security</module>
     <module>chaos-common-redis</module>
+    <module>chaos-common-log</module>
   </modules>
 
   <artifactId>chaos-common</artifactId>

@@ -59,6 +59,13 @@ auth:
     # 过期时间
     expiration: 604800
 
+# 日志配置
+logging:
+  level:
+    com.chaos: info
+    org.springframework: warn
+  config: classpath:logback-plus.xml
+
 # Spring配置
 #spring:
 #  profiles:

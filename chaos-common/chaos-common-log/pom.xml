@@ -5,21 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.chaos</groupId>
-    <artifactId>chaos-base-modules</artifactId>
+    <artifactId>chaos-common</artifactId>
     <version>${revision}</version>
   </parent>
 
-  <artifactId>chaos-system</artifactId>
-
-  <description>
-    system系统模块
-  </description>
+  <artifactId>chaos-common-log</artifactId>
 
   <dependencies>
-    <dependency>
-      <groupId>com.chaos</groupId>
-      <artifactId>chaos-common-core</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>com.chaos</groupId>
@@ -27,9 +19,10 @@
     </dependency>
 
     <dependency>
-      <groupId>com.chaos</groupId>
-      <artifactId>chaos-common-log</artifactId>
+      <groupId>com.alibaba</groupId>
+      <artifactId>transmittable-thread-local</artifactId>
     </dependency>
+
   </dependencies>
 
 </project>
