@@ -1,6 +1,8 @@
 package com.chaos.common.core.entity;
 
 import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class LoginUser {
+public class LoginUser implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
@@ -63,7 +65,8 @@ public class LoginUser {
   private String nickname;
 
   /** 角色对象 */
-  //  private List<SysRole> roles;
+  private List<RoleDTO> roles;
+
   /** 数据权限 当前角色ID */
   private Long roleId;
 

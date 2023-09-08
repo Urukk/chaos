@@ -1,5 +1,6 @@
 package com.chaos.common.core.entity;
 
+import com.chaos.common.core.xss.Xss;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ public class LoginBody {
 
   /** 用户账号 */
   @NotBlank(message = "用户账号不能为空")
+  @Xss(message = "用户账号不能包含脚本字符")
   private String userNo;
 
   /** 用户名 */
