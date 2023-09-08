@@ -11,6 +11,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,8 @@ public class SysAuthServiceImpl implements SysAuthService {
 
   @Resource private AuthenticationManager authenticationManager;
 
+  @Resource private BCryptPasswordEncoder encoder;
+
   @Resource private SysUserRepository userRepository;
 
   @Override
@@ -36,6 +39,11 @@ public class SysAuthServiceImpl implements SysAuthService {
       throw new ChaosException(BasicCode.ERROR_LOGIN);
     }
     SysUserBO bo = MapStructUtils.convert(user, SysUserBO.class);
+    // 密码校验
+    boolean matches = encoder.matches(password, user.getPassword());
+    if (!matches) {
+      throw new ChaosException(BasicCode.ERROR_LOGIN);
+    }
     UsernamePasswordAuthenticationToken token =
         new UsernamePasswordAuthenticationToken(user.getUsername(), password);
     try {
