@@ -22,6 +22,11 @@ public class SysOperationLogServiceImpl
     extends BaseServiceImpl<SysOperationLogRepository, SysOperationLogPO>
     implements SysOperationLogService {
 
+  /**
+   * 异步监听操作日志事件
+   *
+   * @param event 操作日志事件
+   */
   @Async
   @EventListener(OperationLogEvent.class)
   public void recordOperationLog(OperationLogEvent event) {
