@@ -24,9 +24,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- * 客户端工具类
+ * 客户端工具类(借鉴ruoyi)
  *
- * @author ruoyi
+ * @author S.H.I.E.L.D
+ * @since 2023/09/08 11:11
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ServletUtils extends JakartaServletUtil {

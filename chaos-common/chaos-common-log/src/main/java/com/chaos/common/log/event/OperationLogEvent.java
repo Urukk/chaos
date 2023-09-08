@@ -1,28 +1,18 @@
-package com.chaos.system.entity.bo;
+package com.chaos.common.log.event;
 
-import com.chaos.common.core.entity.bo.BaseBO;
-import com.chaos.common.log.event.OperationLogEvent;
-import com.chaos.system.entity.SysOperationLogPO;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import io.github.linpeilie.annotations.AutoMapper;
-import io.github.linpeilie.annotations.AutoMappers;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Data;
 
 /**
- * bo层-操作日志
+ * 操作日志事件
  *
  * @author S.H.I.E.L.D
- * @since 2023/08/23 16:10
+ * @since 2023/09/08 11:11
  */
 @Data
-@AutoMappers({
-  @AutoMapper(target = SysOperationLogPO.class),
-  @AutoMapper(target = OperationLogEvent.class)
-})
-public class SysOperationLogBO extends BaseBO implements Serializable {
+public class OperationLogEvent implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
@@ -66,7 +56,6 @@ public class SysOperationLogBO extends BaseBO implements Serializable {
   private String errorMsg;
 
   /** 操作时间 */
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime operationTime;
 
   /** 消耗时间 */

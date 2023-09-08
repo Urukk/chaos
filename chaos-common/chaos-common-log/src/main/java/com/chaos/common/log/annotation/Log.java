@@ -5,14 +5,16 @@ import com.chaos.common.log.enums.OperatorType;
 import java.lang.annotation.*;
 
 /**
- * 自定义操作日志记录注解
+ * 自定义操作日志记录注解(借鉴ruoyi)
  *
- * @author ruoyi
+ * @author S.H.I.E.L.D
+ * @since 2023/09/08 11:11
  */
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log {
+
   /** 模块 */
   String title() default "";
 

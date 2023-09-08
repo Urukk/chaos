@@ -1,9 +1,10 @@
 package com.chaos.common.log.enums;
 
 /**
- * 操作人类别
+ * 操作人类别(借鉴ruoyi)
  *
- * @author ruoyi
+ * @author S.H.I.E.L.D
+ * @since 2023/09/08 11:11
  */
 public enum OperatorType {
     /**

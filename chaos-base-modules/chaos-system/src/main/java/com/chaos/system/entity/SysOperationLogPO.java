@@ -37,14 +37,23 @@ public class SysOperationLogPO extends BasePO {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  /** 操作模块 */
+  @Column private String title;
+
   /** IP地址 */
   @Column private String operationIp;
 
   /** 操作类型(0其它 1新增 2修改 3删除) */
-  @Column private Integer operationType;
+  @Column private Integer businessType;
 
-  /** 方法名 */
+  /** 请求url */
+  @Column private String operationUrl;
+
+  /** 请求方法 */
   @Column private String operationMethod;
+
+  /** 请求方式 */
+  @Column private String requestMethod;
 
   /** 请求参数 */
   @Column private String requestParams;
@@ -52,11 +61,14 @@ public class SysOperationLogPO extends BasePO {
   /** 响应内容 */
   @Column private String responseContent;
 
-  /** 操作内容描述 */
-  @Column private String description;
-
-  /** 操作用户名 */
+  /** 操作人员 */
   @Column private String operationName;
+
+  /** 操作状态（0正常 1异常） */
+  @Column private Integer status;
+
+  /** 错误消息 */
+  @Column private String errorMsg;
 
   /** 操作时间 */
   @Column
